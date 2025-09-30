@@ -1,6 +1,6 @@
 {
   "name": "@maxijonson/rust-maps-api",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Unofficial Node.js clients for the Rust Maps API.",
   "type": "module",
   "license": "MIT",
