@@ -84,6 +84,6 @@ npm version patch # or minor or major
 
 Apart from configuration, everything is automatically generated from the OpenAPI spec. No manual changes are made to the generated code. If you find the generated clients are outdated, you can let me know and I'll run the generation script again and publish them to NPM. This project doesn't do anything fancy that you wouldn't be able to do yourself with Hey API.
 
-If you do contribute however, **please don't waste your time updating the generated code**, as it will be overwritten when I publish your changes to NPM. If something is wrong in the generated code, please try to fix it via the [`openapi-ts.config.ts`](./openapi-ts.config.ts) configuration file, not in the generated code. 
+If you do contribute however, **please don't waste your time updating the generated code**, as it will be overwritten when I publish your changes to NPM. If something is wrong in the generated code, please try to fix it via the [`openapi-ts.config.ts`](./openapi-ts.config.ts) configuration file, not in the generated code.
 
 Though I prefer you not include changes to generated code in your pull requests, you may still do. However, just know that if your PR is merged, any changes to generated code will automatically be overwritten the next time I publish to NPM.
