@@ -1,0 +1,52 @@
+{
+  "name": "@maxijonson/rust-maps-api",
+  "version": "0.0.1",
+  "description": "Unofficial Node.js clients for the Rust Maps API.",
+  "type": "module",
+  "license": "MIT",
+  "homepage": "https://github.com/maxijonson/rust-maps-api#readme",
+  "bugs": {
+    "url": "https://github.com/maxijonson/rust-maps-api/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxijonson/rust-maps-api.git"
+  },
+  "author": "Tristan Chin <tristan.chin@chintristan.io>",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "npm run lint && tsdown && attw --pack .",
+    "dev": "tsdown --watch",
+    "format": "prettier --write .",
+    "lint": "tsc --noEmit && eslint src/**/*.ts --max-warnings=0"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.2",
+    "@eslint/js": "^9.36.0",
+    "@types/node": "^22.15.17",
+    "eslint": "^9.36.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "globals": "^16.4.0",
+    "prettier": "^3.6.2",
+    "tsdown": "^0.11.9",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.45.0"
+  }
+}
