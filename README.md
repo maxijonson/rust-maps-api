@@ -1,13 +1,18 @@
-<center>
-    <h1>Rust Maps API</h1>
-    <a href="https://www.npmjs.com/package/@maxijonson/rust-maps-api">
-        <img src="https://img.shields.io/npm/v/%40maxijonson%2Frust-maps-api?color=green" alt="NPM Version" />
-    </a>
-    <br />
+<p align="center">
+    <h1 align="center">Rust Maps API</h1>
+</p>
+
+<p align="center">
     Unofficial Node.js clients for the Rust Maps API. 
     <br />
     All types and clients are automatically generated from <a href="https://api.rustmaps.com/swagger/v4-public/swagger.json">Rust Maps' OpenAPI spec</a> using <a href="https://heyapi.dev/">Hey API</a>.
-</center>
+</p>
+
+<p align="center">
+    <a href="https://www.npmjs.com/package/@maxijonson/rust-maps-api">
+        <img src="https://img.shields.io/npm/v/%40maxijonson%2Frust-maps-api?color=green" alt="NPM Version" />
+    </a>
+</p>
 
 ## ⚠️ Unstable - Use at your own risk
 
