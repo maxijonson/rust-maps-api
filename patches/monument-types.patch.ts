@@ -4,7 +4,6 @@ import type { SchemaPatch } from "./patches.types";
 export const monumentTypesSchemaPatch: SchemaPatch = (schema) => {
   if (schema.type === "string") return;
   schema.type = "string";
-  console.log(schema);
 
   // HACK: These are unconfirmed. Based on comparing the enum names from the OpenAPI spec with the actual requests made by the Rust Maps website
   schema.enum = [
