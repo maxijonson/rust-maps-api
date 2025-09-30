@@ -35,7 +35,7 @@
     "dev": "tsdown --watch",
     "format": "prettier --write .",
     "lint": "tsc --noEmit && eslint src/**/*.ts --max-warnings=0",
-    "prepublish": "rm -rf dist && npm run build"
+    "prepublishOnly": "rm -rf dist && npm run build"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.2",
