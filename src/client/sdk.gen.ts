@@ -43,34 +43,6 @@ import type {
   RustMapsApiFeaturesPublicApiSearchSearchRawErrors,
   RustMapsApiFeaturesPublicApiSearchSearchRawResponses,
 } from "./types.gen";
-import {
-  ZRustMapsApiFeaturesPublicApiCustomMapsCreateData,
-  ZRustMapsApiFeaturesPublicApiCustomMapsCreateFromConfigData,
-  ZRustMapsApiFeaturesPublicApiCustomMapsCreateFromConfigResponse,
-  ZRustMapsApiFeaturesPublicApiCustomMapsCreateResponse,
-  ZRustMapsApiFeaturesPublicApiCustomMapsDefaultConfigData,
-  ZRustMapsApiFeaturesPublicApiCustomMapsDefaultConfigResponse,
-  ZRustMapsApiFeaturesPublicApiCustomMapsGetConfigsData,
-  ZRustMapsApiFeaturesPublicApiCustomMapsGetConfigsResponse,
-  ZRustMapsApiFeaturesPublicApiMapsCreateData,
-  ZRustMapsApiFeaturesPublicApiMapsCreateResponse,
-  ZRustMapsApiFeaturesPublicApiMapsGetIdData,
-  ZRustMapsApiFeaturesPublicApiMapsGetIdResponse,
-  ZRustMapsApiFeaturesPublicApiMapsGetSeedSizeData,
-  ZRustMapsApiFeaturesPublicApiMapsGetSeedSizeResponse,
-  ZRustMapsApiFeaturesPublicApiMapsGetSettingsByIdData,
-  ZRustMapsApiFeaturesPublicApiMapsGetSettingsByIdResponse,
-  ZRustMapsApiFeaturesPublicApiMapsGetUrlData,
-  ZRustMapsApiFeaturesPublicApiMapsGetUrlResponse,
-  ZRustMapsApiFeaturesPublicApiMapsUploadData,
-  ZRustMapsApiFeaturesPublicApiMapsUploadResponse,
-  ZRustMapsApiFeaturesPublicApiMiscGetLimitsData,
-  ZRustMapsApiFeaturesPublicApiMiscGetLimitsResponse,
-  ZRustMapsApiFeaturesPublicApiSearchSearchByFilterData,
-  ZRustMapsApiFeaturesPublicApiSearchSearchByFilterResponse,
-  ZRustMapsApiFeaturesPublicApiSearchSearchRawData,
-  ZRustMapsApiFeaturesPublicApiSearchSearchRawResponse,
-} from "./zod.gen";
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean> = Options2<
   TData,
@@ -101,13 +73,6 @@ export class Search {
       RustMapsApiFeaturesPublicApiSearchSearchByFilterErrors,
       ThrowOnError
     >({
-      requestValidator: async (data) => {
-        return await ZRustMapsApiFeaturesPublicApiSearchSearchByFilterData.parseAsync(data);
-      },
-      responseType: "json",
-      responseValidator: async (data) => {
-        return await ZRustMapsApiFeaturesPublicApiSearchSearchByFilterResponse.parseAsync(data);
-      },
       security: [
         {
           name: "X-API-Key",
@@ -130,13 +95,6 @@ export class Search {
       RustMapsApiFeaturesPublicApiSearchSearchRawErrors,
       ThrowOnError
     >({
-      requestValidator: async (data) => {
-        return await ZRustMapsApiFeaturesPublicApiSearchSearchRawData.parseAsync(data);
-      },
-      responseType: "json",
-      responseValidator: async (data) => {
-        return await ZRustMapsApiFeaturesPublicApiSearchSearchRawResponse.parseAsync(data);
-      },
       security: [
         {
           name: "X-API-Key",
@@ -165,13 +123,6 @@ export class Misc {
       RustMapsApiFeaturesPublicApiMiscGetLimitsErrors,
       ThrowOnError
     >({
-      requestValidator: async (data) => {
-        return await ZRustMapsApiFeaturesPublicApiMiscGetLimitsData.parseAsync(data);
-      },
-      responseType: "json",
-      responseValidator: async (data) => {
-        return await ZRustMapsApiFeaturesPublicApiMiscGetLimitsResponse.parseAsync(data);
-      },
       security: [
         {
           name: "X-API-Key",
@@ -194,13 +145,6 @@ export class Misc {
       RustMapsApiFeaturesPublicApiCustomMapsGetConfigsErrors,
       ThrowOnError
     >({
-      requestValidator: async (data) => {
-        return await ZRustMapsApiFeaturesPublicApiCustomMapsGetConfigsData.parseAsync(data);
-      },
-      responseType: "json",
-      responseValidator: async (data) => {
-        return await ZRustMapsApiFeaturesPublicApiCustomMapsGetConfigsResponse.parseAsync(data);
-      },
       security: [
         {
           name: "X-API-Key",
@@ -225,13 +169,6 @@ export class Maps {
       RustMapsApiFeaturesPublicApiMapsCreateErrors,
       ThrowOnError
     >({
-      requestValidator: async (data) => {
-        return await ZRustMapsApiFeaturesPublicApiMapsCreateData.parseAsync(data);
-      },
-      responseType: "json",
-      responseValidator: async (data) => {
-        return await ZRustMapsApiFeaturesPublicApiMapsCreateResponse.parseAsync(data);
-      },
       security: [
         {
           name: "X-API-Key",
@@ -258,13 +195,6 @@ export class Maps {
       RustMapsApiFeaturesPublicApiMapsGetIdErrors,
       ThrowOnError
     >({
-      requestValidator: async (data) => {
-        return await ZRustMapsApiFeaturesPublicApiMapsGetIdData.parseAsync(data);
-      },
-      responseType: "json",
-      responseValidator: async (data) => {
-        return await ZRustMapsApiFeaturesPublicApiMapsGetIdResponse.parseAsync(data);
-      },
       security: [
         {
           name: "X-API-Key",
@@ -287,13 +217,6 @@ export class Maps {
       RustMapsApiFeaturesPublicApiMapsGetSeedSizeErrors,
       ThrowOnError
     >({
-      requestValidator: async (data) => {
-        return await ZRustMapsApiFeaturesPublicApiMapsGetSeedSizeData.parseAsync(data);
-      },
-      responseType: "json",
-      responseValidator: async (data) => {
-        return await ZRustMapsApiFeaturesPublicApiMapsGetSeedSizeResponse.parseAsync(data);
-      },
       security: [
         {
           name: "X-API-Key",
@@ -316,13 +239,6 @@ export class Maps {
       RustMapsApiFeaturesPublicApiMapsGetUrlErrors,
       ThrowOnError
     >({
-      requestValidator: async (data) => {
-        return await ZRustMapsApiFeaturesPublicApiMapsGetUrlData.parseAsync(data);
-      },
-      responseType: "json",
-      responseValidator: async (data) => {
-        return await ZRustMapsApiFeaturesPublicApiMapsGetUrlResponse.parseAsync(data);
-      },
       security: [
         {
           name: "X-API-Key",
@@ -347,13 +263,6 @@ export class SubscriptionRequired {
       RustMapsApiFeaturesPublicApiMapsGetSettingsByIdErrors,
       ThrowOnError
     >({
-      requestValidator: async (data) => {
-        return await ZRustMapsApiFeaturesPublicApiMapsGetSettingsByIdData.parseAsync(data);
-      },
-      responseType: "json",
-      responseValidator: async (data) => {
-        return await ZRustMapsApiFeaturesPublicApiMapsGetSettingsByIdResponse.parseAsync(data);
-      },
       security: [
         {
           name: "X-API-Key",
@@ -376,13 +285,6 @@ export class SubscriptionRequired {
       RustMapsApiFeaturesPublicApiCustomMapsDefaultConfigErrors,
       ThrowOnError
     >({
-      requestValidator: async (data) => {
-        return await ZRustMapsApiFeaturesPublicApiCustomMapsDefaultConfigData.parseAsync(data);
-      },
-      responseType: "json",
-      responseValidator: async (data) => {
-        return await ZRustMapsApiFeaturesPublicApiCustomMapsDefaultConfigResponse.parseAsync(data);
-      },
       security: [
         {
           name: "X-API-Key",
@@ -405,13 +307,6 @@ export class SubscriptionRequired {
       RustMapsApiFeaturesPublicApiCustomMapsCreateErrors,
       ThrowOnError
     >({
-      requestValidator: async (data) => {
-        return await ZRustMapsApiFeaturesPublicApiCustomMapsCreateData.parseAsync(data);
-      },
-      responseType: "json",
-      responseValidator: async (data) => {
-        return await ZRustMapsApiFeaturesPublicApiCustomMapsCreateResponse.parseAsync(data);
-      },
       security: [
         {
           name: "X-API-Key",
@@ -438,13 +333,6 @@ export class SubscriptionRequired {
       RustMapsApiFeaturesPublicApiCustomMapsCreateFromConfigErrors,
       ThrowOnError
     >({
-      requestValidator: async (data) => {
-        return await ZRustMapsApiFeaturesPublicApiCustomMapsCreateFromConfigData.parseAsync(data);
-      },
-      responseType: "json",
-      responseValidator: async (data) => {
-        return await ZRustMapsApiFeaturesPublicApiCustomMapsCreateFromConfigResponse.parseAsync(data);
-      },
       security: [
         {
           name: "X-API-Key",
@@ -474,13 +362,6 @@ export class MapsUpload {
       ThrowOnError
     >({
       ...formDataBodySerializer,
-      requestValidator: async (data) => {
-        return await ZRustMapsApiFeaturesPublicApiMapsUploadData.parseAsync(data);
-      },
-      responseType: "json",
-      responseValidator: async (data) => {
-        return await ZRustMapsApiFeaturesPublicApiMapsUploadResponse.parseAsync(data);
-      },
       security: [
         {
           name: "X-API-Key",

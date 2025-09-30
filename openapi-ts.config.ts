@@ -2,6 +2,30 @@ import { defineConfig } from "@hey-api/openapi-ts";
 
 export default defineConfig({
   input: "https://api.rustmaps.com/swagger/v4-public/swagger.json",
+  parser: {
+    patch: {
+      schemas: {
+        // RustMaps API incorrectly defines this enum as an integer, but it's actually a string enum
+        MonumentTypes: (schema) => {
+          if (schema.type === "string") {
+            return schema;
+          }
+          schema.type = "string";
+          schema.enum = schema["x-enumNames"];
+          return schema;
+        },
+        // RustMaps API incorrectly defines this enum as an integer, but it's actually a string enum
+        BiomeTypes: (schema) => {
+          if (schema.type === "string") {
+            return schema;
+          }
+          schema.type = "string";
+          schema.enum = schema["x-enumNames"];
+          return schema;
+        },
+      },
+    },
+  },
   output: {
     path: "src/client",
     indexFile: false,
@@ -9,24 +33,10 @@ export default defineConfig({
   },
   plugins: [
     {
-      name: "@hey-api/client-axios",
-    },
-    {
-      name: "zod",
-      case: "PascalCase",
-      definitions(name) {
-        return name;
-      },
-      types: {
-        infer: {
-          case: "PascalCase",
-          enabled: true,
-        },
-      },
+      name: "@hey-api/typescript",
     },
     {
       name: "@hey-api/sdk",
-      validator: true,
       asClass: true,
       methodNameBuilder(operation) {
         const tags: string[] = [];
