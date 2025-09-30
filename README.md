@@ -65,7 +65,7 @@ console.log(data, error);
 
 ## Documentation
 
-See [Rust Maps API documentation](https://api.rustmaps.com/swagger).
+See [Rust Maps API documentation](https://api.rustmaps.com/docs/index.html?url=/swagger/v4-public/swagger.json).
 
 ## Development
 
