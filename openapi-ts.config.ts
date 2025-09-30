@@ -34,6 +34,10 @@ export default defineConfig({
   plugins: [
     {
       name: "@hey-api/typescript",
+      enums: {
+        case: "PascalCase",
+        enabled: true,
+      },
     },
     {
       name: "@hey-api/sdk",

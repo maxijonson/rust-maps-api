@@ -22,7 +22,18 @@ export type MetaDto = {
   errors?: Array<string> | null;
 };
 
-export type ResponseStatus = "Success" | "Failed";
+export const ResponseStatus = {
+  /**
+   * Success
+   */
+  Success: "Success",
+  /**
+   * Failed
+   */
+  Failed: "Failed",
+} as const;
+
+export type ResponseStatus = (typeof ResponseStatus)[keyof typeof ResponseStatus];
 
 export type MapThumbnailApidto = {
   mapId?: string | null;
@@ -73,7 +84,30 @@ export type BiomeFilterDto = {
   settings?: MinMaxFilterDto | null;
 };
 
-export type BiomeTypes = "Snow" | "Desert" | "Forest" | "Tundra" | "Jungle";
+export const BiomeTypes = {
+  /**
+   * Snow
+   */
+  Snow: "Snow",
+  /**
+   * Desert
+   */
+  Desert: "Desert",
+  /**
+   * Forest
+   */
+  Forest: "Forest",
+  /**
+   * Tundra
+   */
+  Tundra: "Tundra",
+  /**
+   * Jungle
+   */
+  Jungle: "Jungle",
+} as const;
+
+export type BiomeTypes = (typeof BiomeTypes)[keyof typeof BiomeTypes];
 
 export type MonumentFilterDto = {
   type?: MonumentTypes;
@@ -82,113 +116,443 @@ export type MonumentFilterDto = {
   blockedBiomes?: Array<BiomeTypes> | null;
 };
 
-export type MonumentTypes =
-  | "NotImplemented"
-  | "Gasstation"
-  | "Supermarket"
-  | "Warehouse"
-  | "Lighthouse"
-  | "Harbor_Small"
-  | "Harbor_Large"
-  | "Airfield"
-  | "Junkyard"
-  | "Launch_Site"
-  | "Military_Tunnels"
-  | "Powerplant"
-  | "Trainyard"
-  | "Water_Treatment"
-  | "Sphere_Tank"
-  | "Bandit_Town"
-  | "Sewer_Branch"
-  | "Satellite_Dish"
-  | "Outpost"
-  | "Excavator"
-  | "Sulfur_Quarry"
-  | "Stone_Quarry"
-  | "Hqm_Quarry"
-  | "Oilrig_Large"
-  | "Oilrig_Small"
-  | "Fishing_Village_A"
-  | "Fishing_Village_B"
-  | "Fishing_Village_C"
-  | "Water_Well_A"
-  | "Water_Well_B"
-  | "Water_Well_C"
-  | "Water_Well_D"
-  | "Water_Well_E"
-  | "Mountain_1"
-  | "Mountain_2"
-  | "Mountain_3"
-  | "Mountain_4"
-  | "Mountain_5"
-  | "Swamp_A"
-  | "Swamp_B"
-  | "Swamp_C"
-  | "Ice_Lake_1"
-  | "Ice_Lake_2"
-  | "Ice_Lake_3"
-  | "Ice_Lake_4"
-  | "Cave_Large_Hard"
-  | "Cave_Large_Medium"
-  | "Cave_Large_Sewers_Hard"
-  | "Cave_Medium_Easy"
-  | "Cave_Medium_Hard"
-  | "Cave_Medium_Medium"
-  | "Cave_Small_Easy"
-  | "Cave_Small_Hard"
-  | "Cave_Small_Medium"
-  | "Iceberg_1"
-  | "Iceberg_2"
-  | "Iceberg_3"
-  | "Iceberg_4"
-  | "Iceberg_5"
-  | "Powerline_A"
-  | "Powerline_B"
-  | "Powerline_C"
-  | "Powerline_D"
-  | "Power_Substation_Small_1"
-  | "Power_Substation_Small_2"
-  | "Power_Substation_Big_2"
-  | "Power_Substation_Big_1"
-  | "Stables_A"
-  | "Stables_B"
-  | "Tunnel_Entrance"
-  | "Underwater_A"
-  | "Underwater_B"
-  | "Underwater_C"
-  | "Underwater_D"
-  | "Military_Base_A"
-  | "Military_Base_B"
-  | "Military_Base_C"
-  | "Military_Base_D"
-  | "Arctic_Research_Base_A"
-  | "Nuclear_Missile_Silo"
-  | "Ferry_Terminal_1"
-  | "Tunnel_Entrance_Transition"
-  | "Large_God_Rock"
-  | "Medium_God_Rock"
-  | "Tiny_God_Rock"
-  | "Three_Wall_Rock"
-  | "Anvil_Rock"
-  | "Radtown"
-  | "Lake_A"
-  | "Lake_B"
-  | "Lake_C"
-  | "Canyon_A"
-  | "Canyon_B"
-  | "Canyon_C"
-  | "Oasis_A"
-  | "Oasis_B"
-  | "Oasis_C"
-  | "Jungle_Ruin_A"
-  | "Jungle_Ruin_B"
-  | "Jungle_Ruin_C"
-  | "Jungle_Ruin_D"
-  | "Jungle_Ruin_E"
-  | "Jungle_Ziggurat_A"
-  | "CustomMonument";
+export const MonumentTypes = {
+  /**
+   * NotImplemented
+   */
+  NotImplemented: "NotImplemented",
+  /**
+   * Gasstation
+   */
+  Gasstation: "Gasstation",
+  /**
+   * Supermarket
+   */
+  Supermarket: "Supermarket",
+  /**
+   * Warehouse
+   */
+  Warehouse: "Warehouse",
+  /**
+   * Lighthouse
+   */
+  Lighthouse: "Lighthouse",
+  /**
+   * Harbor_Small
+   */
+  HarborSmall: "Harbor_Small",
+  /**
+   * Harbor_Large
+   */
+  HarborLarge: "Harbor_Large",
+  /**
+   * Airfield
+   */
+  Airfield: "Airfield",
+  /**
+   * Junkyard
+   */
+  Junkyard: "Junkyard",
+  /**
+   * Launch_Site
+   */
+  LaunchSite: "Launch_Site",
+  /**
+   * Military_Tunnels
+   */
+  MilitaryTunnels: "Military_Tunnels",
+  /**
+   * Powerplant
+   */
+  Powerplant: "Powerplant",
+  /**
+   * Trainyard
+   */
+  Trainyard: "Trainyard",
+  /**
+   * Water_Treatment
+   */
+  WaterTreatment: "Water_Treatment",
+  /**
+   * Sphere_Tank
+   */
+  SphereTank: "Sphere_Tank",
+  /**
+   * Bandit_Town
+   */
+  BanditTown: "Bandit_Town",
+  /**
+   * Sewer_Branch
+   */
+  SewerBranch: "Sewer_Branch",
+  /**
+   * Satellite_Dish
+   */
+  SatelliteDish: "Satellite_Dish",
+  /**
+   * Outpost
+   */
+  Outpost: "Outpost",
+  /**
+   * Excavator
+   */
+  Excavator: "Excavator",
+  /**
+   * Sulfur_Quarry
+   */
+  SulfurQuarry: "Sulfur_Quarry",
+  /**
+   * Stone_Quarry
+   */
+  StoneQuarry: "Stone_Quarry",
+  /**
+   * Hqm_Quarry
+   */
+  HqmQuarry: "Hqm_Quarry",
+  /**
+   * Oilrig_Large
+   */
+  OilrigLarge: "Oilrig_Large",
+  /**
+   * Oilrig_Small
+   */
+  OilrigSmall: "Oilrig_Small",
+  /**
+   * Fishing_Village_A
+   */
+  FishingVillageA: "Fishing_Village_A",
+  /**
+   * Fishing_Village_B
+   */
+  FishingVillageB: "Fishing_Village_B",
+  /**
+   * Fishing_Village_C
+   */
+  FishingVillageC: "Fishing_Village_C",
+  /**
+   * Water_Well_A
+   */
+  WaterWellA: "Water_Well_A",
+  /**
+   * Water_Well_B
+   */
+  WaterWellB: "Water_Well_B",
+  /**
+   * Water_Well_C
+   */
+  WaterWellC: "Water_Well_C",
+  /**
+   * Water_Well_D
+   */
+  WaterWellD: "Water_Well_D",
+  /**
+   * Water_Well_E
+   */
+  WaterWellE: "Water_Well_E",
+  /**
+   * Mountain_1
+   */
+  Mountain1: "Mountain_1",
+  /**
+   * Mountain_2
+   */
+  Mountain2: "Mountain_2",
+  /**
+   * Mountain_3
+   */
+  Mountain3: "Mountain_3",
+  /**
+   * Mountain_4
+   */
+  Mountain4: "Mountain_4",
+  /**
+   * Mountain_5
+   */
+  Mountain5: "Mountain_5",
+  /**
+   * Swamp_A
+   */
+  SwampA: "Swamp_A",
+  /**
+   * Swamp_B
+   */
+  SwampB: "Swamp_B",
+  /**
+   * Swamp_C
+   */
+  SwampC: "Swamp_C",
+  /**
+   * Ice_Lake_1
+   */
+  IceLake1: "Ice_Lake_1",
+  /**
+   * Ice_Lake_2
+   */
+  IceLake2: "Ice_Lake_2",
+  /**
+   * Ice_Lake_3
+   */
+  IceLake3: "Ice_Lake_3",
+  /**
+   * Ice_Lake_4
+   */
+  IceLake4: "Ice_Lake_4",
+  /**
+   * Cave_Large_Hard
+   */
+  CaveLargeHard: "Cave_Large_Hard",
+  /**
+   * Cave_Large_Medium
+   */
+  CaveLargeMedium: "Cave_Large_Medium",
+  /**
+   * Cave_Large_Sewers_Hard
+   */
+  CaveLargeSewersHard: "Cave_Large_Sewers_Hard",
+  /**
+   * Cave_Medium_Easy
+   */
+  CaveMediumEasy: "Cave_Medium_Easy",
+  /**
+   * Cave_Medium_Hard
+   */
+  CaveMediumHard: "Cave_Medium_Hard",
+  /**
+   * Cave_Medium_Medium
+   */
+  CaveMediumMedium: "Cave_Medium_Medium",
+  /**
+   * Cave_Small_Easy
+   */
+  CaveSmallEasy: "Cave_Small_Easy",
+  /**
+   * Cave_Small_Hard
+   */
+  CaveSmallHard: "Cave_Small_Hard",
+  /**
+   * Cave_Small_Medium
+   */
+  CaveSmallMedium: "Cave_Small_Medium",
+  /**
+   * Iceberg_1
+   */
+  Iceberg1: "Iceberg_1",
+  /**
+   * Iceberg_2
+   */
+  Iceberg2: "Iceberg_2",
+  /**
+   * Iceberg_3
+   */
+  Iceberg3: "Iceberg_3",
+  /**
+   * Iceberg_4
+   */
+  Iceberg4: "Iceberg_4",
+  /**
+   * Iceberg_5
+   */
+  Iceberg5: "Iceberg_5",
+  /**
+   * Powerline_A
+   */
+  PowerlineA: "Powerline_A",
+  /**
+   * Powerline_B
+   */
+  PowerlineB: "Powerline_B",
+  /**
+   * Powerline_C
+   */
+  PowerlineC: "Powerline_C",
+  /**
+   * Powerline_D
+   */
+  PowerlineD: "Powerline_D",
+  /**
+   * Power_Substation_Small_1
+   */
+  PowerSubstationSmall1: "Power_Substation_Small_1",
+  /**
+   * Power_Substation_Small_2
+   */
+  PowerSubstationSmall2: "Power_Substation_Small_2",
+  /**
+   * Power_Substation_Big_2
+   */
+  PowerSubstationBig2: "Power_Substation_Big_2",
+  /**
+   * Power_Substation_Big_1
+   */
+  PowerSubstationBig1: "Power_Substation_Big_1",
+  /**
+   * Stables_A
+   */
+  StablesA: "Stables_A",
+  /**
+   * Stables_B
+   */
+  StablesB: "Stables_B",
+  /**
+   * Tunnel_Entrance
+   */
+  TunnelEntrance: "Tunnel_Entrance",
+  /**
+   * Underwater_A
+   */
+  UnderwaterA: "Underwater_A",
+  /**
+   * Underwater_B
+   */
+  UnderwaterB: "Underwater_B",
+  /**
+   * Underwater_C
+   */
+  UnderwaterC: "Underwater_C",
+  /**
+   * Underwater_D
+   */
+  UnderwaterD: "Underwater_D",
+  /**
+   * Military_Base_A
+   */
+  MilitaryBaseA: "Military_Base_A",
+  /**
+   * Military_Base_B
+   */
+  MilitaryBaseB: "Military_Base_B",
+  /**
+   * Military_Base_C
+   */
+  MilitaryBaseC: "Military_Base_C",
+  /**
+   * Military_Base_D
+   */
+  MilitaryBaseD: "Military_Base_D",
+  /**
+   * Arctic_Research_Base_A
+   */
+  ArcticResearchBaseA: "Arctic_Research_Base_A",
+  /**
+   * Nuclear_Missile_Silo
+   */
+  NuclearMissileSilo: "Nuclear_Missile_Silo",
+  /**
+   * Ferry_Terminal_1
+   */
+  FerryTerminal1: "Ferry_Terminal_1",
+  /**
+   * Tunnel_Entrance_Transition
+   */
+  TunnelEntranceTransition: "Tunnel_Entrance_Transition",
+  /**
+   * Large_God_Rock
+   */
+  LargeGodRock: "Large_God_Rock",
+  /**
+   * Medium_God_Rock
+   */
+  MediumGodRock: "Medium_God_Rock",
+  /**
+   * Tiny_God_Rock
+   */
+  TinyGodRock: "Tiny_God_Rock",
+  /**
+   * Three_Wall_Rock
+   */
+  ThreeWallRock: "Three_Wall_Rock",
+  /**
+   * Anvil_Rock
+   */
+  AnvilRock: "Anvil_Rock",
+  /**
+   * Radtown
+   */
+  Radtown: "Radtown",
+  /**
+   * Lake_A
+   */
+  LakeA: "Lake_A",
+  /**
+   * Lake_B
+   */
+  LakeB: "Lake_B",
+  /**
+   * Lake_C
+   */
+  LakeC: "Lake_C",
+  /**
+   * Canyon_A
+   */
+  CanyonA: "Canyon_A",
+  /**
+   * Canyon_B
+   */
+  CanyonB: "Canyon_B",
+  /**
+   * Canyon_C
+   */
+  CanyonC: "Canyon_C",
+  /**
+   * Oasis_A
+   */
+  OasisA: "Oasis_A",
+  /**
+   * Oasis_B
+   */
+  OasisB: "Oasis_B",
+  /**
+   * Oasis_C
+   */
+  OasisC: "Oasis_C",
+  /**
+   * Jungle_Ruin_A
+   */
+  JungleRuinA: "Jungle_Ruin_A",
+  /**
+   * Jungle_Ruin_B
+   */
+  JungleRuinB: "Jungle_Ruin_B",
+  /**
+   * Jungle_Ruin_C
+   */
+  JungleRuinC: "Jungle_Ruin_C",
+  /**
+   * Jungle_Ruin_D
+   */
+  JungleRuinD: "Jungle_Ruin_D",
+  /**
+   * Jungle_Ruin_E
+   */
+  JungleRuinE: "Jungle_Ruin_E",
+  /**
+   * Jungle_Ziggurat_A
+   */
+  JungleZigguratA: "Jungle_Ziggurat_A",
+  /**
+   * CustomMonument
+   */
+  CustomMonument: "CustomMonument",
+} as const;
 
-export type SelectionStatus = "Wanted" | "NotWanted" | "NoPreference";
+export type MonumentTypes = (typeof MonumentTypes)[keyof typeof MonumentTypes];
+
+export const SelectionStatus = {
+  /**
+   * Wanted
+   */
+  Wanted: "Wanted",
+  /**
+   * NotWanted
+   */
+  NotWanted: "NotWanted",
+  /**
+   * NoPreference
+   */
+  NoPreference: "NoPreference",
+} as const;
+
+export type SelectionStatus = (typeof SelectionStatus)[keyof typeof SelectionStatus];
 
 export type ServiceResponseOfMapGenerationStatsOverviewDto = {
   meta?: MetaDto | null;
@@ -231,7 +595,30 @@ export type MapStatusDto = {
   lastGeneratorPingUtc?: string | null;
 };
 
-export type MapStates = "Active" | "InQueue" | "Generating" | "Processing" | "Uploading";
+export const MapStates = {
+  /**
+   * Active
+   */
+  Active: "Active",
+  /**
+   * InQueue
+   */
+  InQueue: "InQueue",
+  /**
+   * Generating
+   */
+  Generating: "Generating",
+  /**
+   * Processing
+   */
+  Processing: "Processing",
+  /**
+   * Uploading
+   */
+  Uploading: "Uploading",
+} as const;
+
+export type MapStates = (typeof MapStates)[keyof typeof MapStates];
 
 export type MapGenerationRequestDto = {
   size?: number;
@@ -372,19 +759,55 @@ export type BiomesConfiguration = {
   junglePercentage?: number | null;
 };
 
-export type BiomeAngle =
-  | "TopSnowBottomDesert"
-  | "LeftDesertRightSnow"
-  | "TopDesertBottomSnow"
-  | "LeftSnowRightDesert"
-  | "Default";
+export const BiomeAngle = {
+  /**
+   * TopSnowBottomDesert
+   */
+  TopSnowBottomDesert: "TopSnowBottomDesert",
+  /**
+   * LeftDesertRightSnow
+   */
+  LeftDesertRightSnow: "LeftDesertRightSnow",
+  /**
+   * TopDesertBottomSnow
+   */
+  TopDesertBottomSnow: "TopDesertBottomSnow",
+  /**
+   * LeftSnowRightDesert
+   */
+  LeftSnowRightDesert: "LeftSnowRightDesert",
+  /**
+   * Default
+   */
+  Default: "Default",
+} as const;
 
-export type LootAngle =
-  | "TopTier2BottomTier0"
-  | "LeftTier2RightTier0"
-  | "TopTier0BottomTier2"
-  | "LeftTier0RightTier2"
-  | "Default";
+export type BiomeAngle = (typeof BiomeAngle)[keyof typeof BiomeAngle];
+
+export const LootAngle = {
+  /**
+   * TopTier2BottomTier0
+   */
+  TopTier2BottomTier0: "TopTier2BottomTier0",
+  /**
+   * LeftTier2RightTier0
+   */
+  LeftTier2RightTier0: "LeftTier2RightTier0",
+  /**
+   * TopTier0BottomTier2
+   */
+  TopTier0BottomTier2: "TopTier0BottomTier2",
+  /**
+   * LeftTier0RightTier2
+   */
+  LeftTier0RightTier2: "LeftTier0RightTier2",
+  /**
+   * Default
+   */
+  Default: "Default",
+} as const;
+
+export type LootAngle = (typeof LootAngle)[keyof typeof LootAngle];
 
 export type OilRigConfiguration = LargeMonumentConfiguration & {
   biomePreference?: BiomePreference | null;
@@ -402,7 +825,26 @@ export type OilRigPosition = {
   position?: number;
 };
 
-export type MonumentAlignment = "Top" | "Left" | "Right" | "Bottom";
+export const MonumentAlignment = {
+  /**
+   * Top
+   */
+  Top: "Top",
+  /**
+   * Left
+   */
+  Left: "Left",
+  /**
+   * Right
+   */
+  Right: "Right",
+  /**
+   * Bottom
+   */
+  Bottom: "Bottom",
+} as const;
+
+export type MonumentAlignment = (typeof MonumentAlignment)[keyof typeof MonumentAlignment];
 
 export type LargeMonumentConfiguration = BasicMonumentConfiguration & {
   desired?: boolean;
