@@ -1,28 +1,14 @@
 import { defineConfig } from "@hey-api/openapi-ts";
+import { biomeTypesSchemaPatch } from "./patches/biome-types.patch";
+import { monumentTypesSchemaPatch } from "./patches/monument-types.patch";
 
 export default defineConfig({
   input: "https://api.rustmaps.com/swagger/v4-public/swagger.json",
   parser: {
     patch: {
       schemas: {
-        // RustMaps API incorrectly defines this enum as an integer, but it's actually a string enum
-        MonumentTypes: (schema) => {
-          if (schema.type === "string") {
-            return schema;
-          }
-          schema.type = "string";
-          schema.enum = schema["x-enumNames"];
-          return schema;
-        },
-        // RustMaps API incorrectly defines this enum as an integer, but it's actually a string enum
-        BiomeTypes: (schema) => {
-          if (schema.type === "string") {
-            return schema;
-          }
-          schema.type = "string";
-          schema.enum = schema["x-enumNames"];
-          return schema;
-        },
+        MonumentTypes: monumentTypesSchemaPatch,
+        BiomeTypes: biomeTypesSchemaPatch,
       },
     },
   },

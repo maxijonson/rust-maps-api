@@ -21,7 +21,7 @@ This project relies on [Rust Maps' OpenAPI spec](https://api.rustmaps.com/swagge
 Examples of issues include the following. Note that these are just examples from my own usage in projects, and there may be many more.
 
 - `MonumentTypes` and `BiomeTypes` are typed as `integer` instead of `string`. A patch has been configured in this project to fix this.
-- `Search.searchRaw` request schema has a lot of incorrectly typed fields, making it practically unusable. `largeMonuments` is typed as `MonumentTypes`, though not all `MonumentTypes` are valid values for this field.
+- `Search.searchRaw` request schema has a lot of incorrectly typed fields, making it practically unusable. `largeMonuments` is typed as `MonumentTypes`, though not all `MonumentTypes` are valid values for this field. This was also (partly) patched by examining how requests are made on the Rust Maps website.
 
 ## Installation
 

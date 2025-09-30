@@ -118,13 +118,97 @@ export type MonumentFilterDto = {
 
 export const MonumentTypes = {
   /**
-   * NotImplemented
+   * Outpost
    */
-  NotImplemented: "NotImplemented",
+  Outpost: "Outpost",
   /**
-   * Gasstation
+   * Bandit Town
    */
-  Gasstation: "Gasstation",
+  BanditTown: "Bandit Town",
+  /**
+   * Fishing Village A
+   */
+  FishingVillageA: "Fishing Village A",
+  /**
+   * Fishing Village B
+   */
+  FishingVillageB: "Fishing Village B",
+  /**
+   * Fishing Village C
+   */
+  FishingVillageC: "Fishing Village C",
+  /**
+   * Ranch
+   */
+  Ranch: "Ranch",
+  /**
+   * Large Barn
+   */
+  LargeBarn: "Large Barn",
+  /**
+   * Excavator
+   */
+  Excavator: "Excavator",
+  /**
+   * Airfield
+   */
+  Airfield: "Airfield",
+  /**
+   * Junkyard
+   */
+  Junkyard: "Junkyard",
+  /**
+   * Launch Site
+   */
+  LaunchSite: "Launch Site",
+  /**
+   * Military Tunnels
+   */
+  MilitaryTunnels: "Military Tunnels",
+  /**
+   * Powerplant
+   */
+  Powerplant: "Powerplant",
+  /**
+   * Radtown
+   */
+  Radtown: "Radtown",
+  /**
+   * Trainyard
+   */
+  Trainyard: "Trainyard",
+  /**
+   * Water Treatment
+   */
+  WaterTreatment: "Water Treatment",
+  /**
+   * Sphere Tank
+   */
+  SphereTank: "Sphere Tank",
+  /**
+   * Satellite Dish
+   */
+  SatelliteDish: "Satellite Dish",
+  /**
+   * Large Oilrig
+   */
+  LargeOilrig: "Large Oilrig",
+  /**
+   * Small Oilrig
+   */
+  SmallOilrig: "Small Oilrig",
+  /**
+   * Nuclear Missile Silo
+   */
+  NuclearMissileSilo: "Nuclear Missile Silo",
+  /**
+   * Ziggurat
+   */
+  Ziggurat: "Ziggurat",
+  /**
+   * Gas Station
+   */
+  GasStation: "Gas Station",
   /**
    * Supermarket
    */
@@ -138,401 +222,197 @@ export const MonumentTypes = {
    */
   Lighthouse: "Lighthouse",
   /**
-   * Harbor_Small
+   * Sewer Branch
    */
-  HarborSmall: "Harbor_Small",
+  SewerBranch: "Sewer Branch",
   /**
-   * Harbor_Large
+   * Swamp A
    */
-  HarborLarge: "Harbor_Large",
+  SwampA: "Swamp A",
   /**
-   * Airfield
+   * Swamp B
    */
-  Airfield: "Airfield",
+  SwampB: "Swamp B",
   /**
-   * Junkyard
+   * Swamp C
    */
-  Junkyard: "Junkyard",
+  SwampC: "Swamp C",
   /**
-   * Launch_Site
+   * Military Base A
    */
-  LaunchSite: "Launch_Site",
+  MilitaryBaseA: "Military Base A",
   /**
-   * Military_Tunnels
+   * Military Base B
    */
-  MilitaryTunnels: "Military_Tunnels",
+  MilitaryBaseB: "Military Base B",
   /**
-   * Powerplant
+   * Military Base C
    */
-  Powerplant: "Powerplant",
+  MilitaryBaseC: "Military Base C",
   /**
-   * Trainyard
+   * Military Base D
    */
-  Trainyard: "Trainyard",
+  MilitaryBaseD: "Military Base D",
   /**
-   * Water_Treatment
+   * Arctic Research Base A
    */
-  WaterTreatment: "Water_Treatment",
+  ArcticResearchBaseA: "Arctic Research Base A",
   /**
-   * Sphere_Tank
+   * Small Harbor
    */
-  SphereTank: "Sphere_Tank",
+  SmallHarbor: "Small Harbor",
   /**
-   * Bandit_Town
+   * Large Harbor
    */
-  BanditTown: "Bandit_Town",
+  LargeHarbor: "Large Harbor",
   /**
-   * Sewer_Branch
+   * Ferry Terminal
    */
-  SewerBranch: "Sewer_Branch",
+  FerryTerminal: "Ferry Terminal",
   /**
-   * Satellite_Dish
+   * Water Well A
    */
-  SatelliteDish: "Satellite_Dish",
+  WaterWellA: "Water Well A",
   /**
-   * Outpost
+   * Water Well B
    */
-  Outpost: "Outpost",
+  WaterWellB: "Water Well B",
   /**
-   * Excavator
+   * Water Well C
    */
-  Excavator: "Excavator",
+  WaterWellC: "Water Well C",
   /**
-   * Sulfur_Quarry
+   * Water Well D
    */
-  SulfurQuarry: "Sulfur_Quarry",
+  WaterWellD: "Water Well D",
   /**
-   * Stone_Quarry
+   * Water Well E
    */
-  StoneQuarry: "Stone_Quarry",
+  WaterWellE: "Water Well E",
   /**
-   * Hqm_Quarry
+   * Cave Large Hard
    */
-  HqmQuarry: "Hqm_Quarry",
+  CaveLargeHard: "Cave Large Hard",
   /**
-   * Oilrig_Large
+   * Cave Large Medium
    */
-  OilrigLarge: "Oilrig_Large",
+  CaveLargeMedium: "Cave Large Medium",
   /**
-   * Oilrig_Small
+   * Cave Large Sewers Hard
    */
-  OilrigSmall: "Oilrig_Small",
+  CaveLargeSewersHard: "Cave Large Sewers Hard",
   /**
-   * Fishing_Village_A
+   * Cave Medium Easy
    */
-  FishingVillageA: "Fishing_Village_A",
+  CaveMediumEasy: "Cave Medium Easy",
   /**
-   * Fishing_Village_B
+   * Cave Medium Hard
    */
-  FishingVillageB: "Fishing_Village_B",
+  CaveMediumHard: "Cave Medium Hard",
   /**
-   * Fishing_Village_C
+   * Cave Medium Medium
    */
-  FishingVillageC: "Fishing_Village_C",
+  CaveMediumMedium: "Cave Medium Medium",
   /**
-   * Water_Well_A
+   * Cave Small Easy
    */
-  WaterWellA: "Water_Well_A",
+  CaveSmallEasy: "Cave Small Easy",
   /**
-   * Water_Well_B
+   * Cave Small Hard
    */
-  WaterWellB: "Water_Well_B",
+  CaveSmallHard: "Cave Small Hard",
   /**
-   * Water_Well_C
+   * Cave Small Medium
    */
-  WaterWellC: "Water_Well_C",
+  CaveSmallMedium: "Cave Small Medium",
   /**
-   * Water_Well_D
+   * Mountain 1
    */
-  WaterWellD: "Water_Well_D",
+  Mountain1: "Mountain 1",
   /**
-   * Water_Well_E
+   * Mountain 2
    */
-  WaterWellE: "Water_Well_E",
+  Mountain2: "Mountain 2",
   /**
-   * Mountain_1
+   * Mountain 3
    */
-  Mountain1: "Mountain_1",
+  Mountain3: "Mountain 3",
   /**
-   * Mountain_2
+   * Mountain 4
    */
-  Mountain2: "Mountain_2",
+  Mountain4: "Mountain 4",
   /**
-   * Mountain_3
+   * Mountain 5
    */
-  Mountain3: "Mountain_3",
+  Mountain5: "Mountain 5",
   /**
-   * Mountain_4
+   * Sulfur Quarry
    */
-  Mountain4: "Mountain_4",
+  SulfurQuarry: "Sulfur Quarry",
   /**
-   * Mountain_5
+   * Stone Quarry
    */
-  Mountain5: "Mountain_5",
+  StoneQuarry: "Stone Quarry",
   /**
-   * Swamp_A
+   * Hqm Quarry
    */
-  SwampA: "Swamp_A",
+  HqmQuarry: "Hqm Quarry",
   /**
-   * Swamp_B
+   * Iceberg 1
    */
-  SwampB: "Swamp_B",
+  Iceberg1: "Iceberg 1",
   /**
-   * Swamp_C
+   * Iceberg 2
    */
-  SwampC: "Swamp_C",
+  Iceberg2: "Iceberg 2",
   /**
-   * Ice_Lake_1
+   * Iceberg 3
    */
-  IceLake1: "Ice_Lake_1",
+  Iceberg3: "Iceberg 3",
   /**
-   * Ice_Lake_2
+   * Iceberg 4
    */
-  IceLake2: "Ice_Lake_2",
+  Iceberg4: "Iceberg 4",
   /**
-   * Ice_Lake_3
+   * Iceberg 5
    */
-  IceLake3: "Ice_Lake_3",
+  Iceberg5: "Iceberg 5",
   /**
-   * Ice_Lake_4
+   * Ice Lake 1
    */
-  IceLake4: "Ice_Lake_4",
+  IceLake1: "Ice Lake 1",
   /**
-   * Cave_Large_Hard
+   * Ice Lake 2
    */
-  CaveLargeHard: "Cave_Large_Hard",
+  IceLake2: "Ice Lake 2",
   /**
-   * Cave_Large_Medium
+   * Ice Lake 3
    */
-  CaveLargeMedium: "Cave_Large_Medium",
+  IceLake3: "Ice Lake 3",
   /**
-   * Cave_Large_Sewers_Hard
+   * Ice Lake 4
    */
-  CaveLargeSewersHard: "Cave_Large_Sewers_Hard",
+  IceLake4: "Ice Lake 4",
   /**
-   * Cave_Medium_Easy
+   * Ruin A
    */
-  CaveMediumEasy: "Cave_Medium_Easy",
+  RuinA: "Ruin A",
   /**
-   * Cave_Medium_Hard
+   * Ruin B
    */
-  CaveMediumHard: "Cave_Medium_Hard",
+  RuinB: "Ruin B",
   /**
-   * Cave_Medium_Medium
+   * Ruin C
    */
-  CaveMediumMedium: "Cave_Medium_Medium",
+  RuinC: "Ruin C",
   /**
-   * Cave_Small_Easy
+   * Ruin D
    */
-  CaveSmallEasy: "Cave_Small_Easy",
+  RuinD: "Ruin D",
   /**
-   * Cave_Small_Hard
+   * Ruin E
    */
-  CaveSmallHard: "Cave_Small_Hard",
-  /**
-   * Cave_Small_Medium
-   */
-  CaveSmallMedium: "Cave_Small_Medium",
-  /**
-   * Iceberg_1
-   */
-  Iceberg1: "Iceberg_1",
-  /**
-   * Iceberg_2
-   */
-  Iceberg2: "Iceberg_2",
-  /**
-   * Iceberg_3
-   */
-  Iceberg3: "Iceberg_3",
-  /**
-   * Iceberg_4
-   */
-  Iceberg4: "Iceberg_4",
-  /**
-   * Iceberg_5
-   */
-  Iceberg5: "Iceberg_5",
-  /**
-   * Powerline_A
-   */
-  PowerlineA: "Powerline_A",
-  /**
-   * Powerline_B
-   */
-  PowerlineB: "Powerline_B",
-  /**
-   * Powerline_C
-   */
-  PowerlineC: "Powerline_C",
-  /**
-   * Powerline_D
-   */
-  PowerlineD: "Powerline_D",
-  /**
-   * Power_Substation_Small_1
-   */
-  PowerSubstationSmall1: "Power_Substation_Small_1",
-  /**
-   * Power_Substation_Small_2
-   */
-  PowerSubstationSmall2: "Power_Substation_Small_2",
-  /**
-   * Power_Substation_Big_2
-   */
-  PowerSubstationBig2: "Power_Substation_Big_2",
-  /**
-   * Power_Substation_Big_1
-   */
-  PowerSubstationBig1: "Power_Substation_Big_1",
-  /**
-   * Stables_A
-   */
-  StablesA: "Stables_A",
-  /**
-   * Stables_B
-   */
-  StablesB: "Stables_B",
-  /**
-   * Tunnel_Entrance
-   */
-  TunnelEntrance: "Tunnel_Entrance",
-  /**
-   * Underwater_A
-   */
-  UnderwaterA: "Underwater_A",
-  /**
-   * Underwater_B
-   */
-  UnderwaterB: "Underwater_B",
-  /**
-   * Underwater_C
-   */
-  UnderwaterC: "Underwater_C",
-  /**
-   * Underwater_D
-   */
-  UnderwaterD: "Underwater_D",
-  /**
-   * Military_Base_A
-   */
-  MilitaryBaseA: "Military_Base_A",
-  /**
-   * Military_Base_B
-   */
-  MilitaryBaseB: "Military_Base_B",
-  /**
-   * Military_Base_C
-   */
-  MilitaryBaseC: "Military_Base_C",
-  /**
-   * Military_Base_D
-   */
-  MilitaryBaseD: "Military_Base_D",
-  /**
-   * Arctic_Research_Base_A
-   */
-  ArcticResearchBaseA: "Arctic_Research_Base_A",
-  /**
-   * Nuclear_Missile_Silo
-   */
-  NuclearMissileSilo: "Nuclear_Missile_Silo",
-  /**
-   * Ferry_Terminal_1
-   */
-  FerryTerminal1: "Ferry_Terminal_1",
-  /**
-   * Tunnel_Entrance_Transition
-   */
-  TunnelEntranceTransition: "Tunnel_Entrance_Transition",
-  /**
-   * Large_God_Rock
-   */
-  LargeGodRock: "Large_God_Rock",
-  /**
-   * Medium_God_Rock
-   */
-  MediumGodRock: "Medium_God_Rock",
-  /**
-   * Tiny_God_Rock
-   */
-  TinyGodRock: "Tiny_God_Rock",
-  /**
-   * Three_Wall_Rock
-   */
-  ThreeWallRock: "Three_Wall_Rock",
-  /**
-   * Anvil_Rock
-   */
-  AnvilRock: "Anvil_Rock",
-  /**
-   * Radtown
-   */
-  Radtown: "Radtown",
-  /**
-   * Lake_A
-   */
-  LakeA: "Lake_A",
-  /**
-   * Lake_B
-   */
-  LakeB: "Lake_B",
-  /**
-   * Lake_C
-   */
-  LakeC: "Lake_C",
-  /**
-   * Canyon_A
-   */
-  CanyonA: "Canyon_A",
-  /**
-   * Canyon_B
-   */
-  CanyonB: "Canyon_B",
-  /**
-   * Canyon_C
-   */
-  CanyonC: "Canyon_C",
-  /**
-   * Oasis_A
-   */
-  OasisA: "Oasis_A",
-  /**
-   * Oasis_B
-   */
-  OasisB: "Oasis_B",
-  /**
-   * Oasis_C
-   */
-  OasisC: "Oasis_C",
-  /**
-   * Jungle_Ruin_A
-   */
-  JungleRuinA: "Jungle_Ruin_A",
-  /**
-   * Jungle_Ruin_B
-   */
-  JungleRuinB: "Jungle_Ruin_B",
-  /**
-   * Jungle_Ruin_C
-   */
-  JungleRuinC: "Jungle_Ruin_C",
-  /**
-   * Jungle_Ruin_D
-   */
-  JungleRuinD: "Jungle_Ruin_D",
-  /**
-   * Jungle_Ruin_E
-   */
-  JungleRuinE: "Jungle_Ruin_E",
-  /**
-   * Jungle_Ziggurat_A
-   */
-  JungleZigguratA: "Jungle_Ziggurat_A",
-  /**
-   * CustomMonument
-   */
-  CustomMonument: "CustomMonument",
+  RuinE: "Ruin E",
 } as const;
 
 export type MonumentTypes = (typeof MonumentTypes)[keyof typeof MonumentTypes];
