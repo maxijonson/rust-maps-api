@@ -16,6 +16,13 @@
   "files": [
     "dist"
   ],
+  "keywords": [
+    "rust-maps",
+    "playrust",
+    "hey-api",
+    "openapi",
+    "api-client"
+  ],
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
