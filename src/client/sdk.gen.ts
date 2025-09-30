@@ -89,400 +89,410 @@ export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends 
   meta?: Record<string, unknown>;
 };
 
-/**
- * Get maps from a filter id that was created on the homepage
- */
-export const rustMapsApiFeaturesPublicApiSearchSearchByFilter = <ThrowOnError extends boolean = false>(
-  options: Options<RustMapsApiFeaturesPublicApiSearchSearchByFilterData, ThrowOnError>,
-) => {
-  return (options.client ?? client).get<
-    RustMapsApiFeaturesPublicApiSearchSearchByFilterResponses,
-    RustMapsApiFeaturesPublicApiSearchSearchByFilterErrors,
-    ThrowOnError
-  >({
-    requestValidator: async (data) => {
-      return await ZRustMapsApiFeaturesPublicApiSearchSearchByFilterData.parseAsync(data);
-    },
-    responseType: "json",
-    responseValidator: async (data) => {
-      return await ZRustMapsApiFeaturesPublicApiSearchSearchByFilterResponse.parseAsync(data);
-    },
-    security: [
-      {
-        name: "X-API-Key",
-        type: "apiKey",
+export class Search {
+  /**
+   * Get maps from a filter id that was created on the homepage
+   */
+  public static searchByFilter<ThrowOnError extends boolean = false>(
+    options: Options<RustMapsApiFeaturesPublicApiSearchSearchByFilterData, ThrowOnError>,
+  ) {
+    return (options.client ?? client).get<
+      RustMapsApiFeaturesPublicApiSearchSearchByFilterResponses,
+      RustMapsApiFeaturesPublicApiSearchSearchByFilterErrors,
+      ThrowOnError
+    >({
+      requestValidator: async (data) => {
+        return await ZRustMapsApiFeaturesPublicApiSearchSearchByFilterData.parseAsync(data);
       },
-    ],
-    url: "/v4/maps/filter/{filterId}",
-    ...options,
-  });
-};
+      responseType: "json",
+      responseValidator: async (data) => {
+        return await ZRustMapsApiFeaturesPublicApiSearchSearchByFilterResponse.parseAsync(data);
+      },
+      security: [
+        {
+          name: "X-API-Key",
+          type: "apiKey",
+        },
+      ],
+      url: "/v4/maps/filter/{filterId}",
+      ...options,
+    });
+  }
 
-/**
- * Search for maps using a raw post body, not all settings need to be provided, only passing the size object for example will work
- */
-export const rustMapsApiFeaturesPublicApiSearchSearchRaw = <ThrowOnError extends boolean = false>(
-  options: Options<RustMapsApiFeaturesPublicApiSearchSearchRawData, ThrowOnError>,
-) => {
-  return (options.client ?? client).post<
-    RustMapsApiFeaturesPublicApiSearchSearchRawResponses,
-    RustMapsApiFeaturesPublicApiSearchSearchRawErrors,
-    ThrowOnError
-  >({
-    requestValidator: async (data) => {
-      return await ZRustMapsApiFeaturesPublicApiSearchSearchRawData.parseAsync(data);
-    },
-    responseType: "json",
-    responseValidator: async (data) => {
-      return await ZRustMapsApiFeaturesPublicApiSearchSearchRawResponse.parseAsync(data);
-    },
-    security: [
-      {
-        name: "X-API-Key",
-        type: "apiKey",
+  /**
+   * Search for maps using a raw post body, not all settings need to be provided, only passing the size object for example will work
+   */
+  public static searchRaw<ThrowOnError extends boolean = false>(
+    options: Options<RustMapsApiFeaturesPublicApiSearchSearchRawData, ThrowOnError>,
+  ) {
+    return (options.client ?? client).post<
+      RustMapsApiFeaturesPublicApiSearchSearchRawResponses,
+      RustMapsApiFeaturesPublicApiSearchSearchRawErrors,
+      ThrowOnError
+    >({
+      requestValidator: async (data) => {
+        return await ZRustMapsApiFeaturesPublicApiSearchSearchRawData.parseAsync(data);
       },
-    ],
-    url: "/v4/maps/search",
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...options.headers,
-    },
-  });
-};
+      responseType: "json",
+      responseValidator: async (data) => {
+        return await ZRustMapsApiFeaturesPublicApiSearchSearchRawResponse.parseAsync(data);
+      },
+      security: [
+        {
+          name: "X-API-Key",
+          type: "apiKey",
+        },
+      ],
+      url: "/v4/maps/search",
+      ...options,
+      headers: {
+        "Content-Type": "application/json",
+        ...options.headers,
+      },
+    });
+  }
+}
 
-/**
- * Returns current map gen limits
- */
-export const rustMapsApiFeaturesPublicApiMiscGetLimits = <ThrowOnError extends boolean = false>(
-  options?: Options<RustMapsApiFeaturesPublicApiMiscGetLimitsData, ThrowOnError>,
-) => {
-  return (options?.client ?? client).get<
-    RustMapsApiFeaturesPublicApiMiscGetLimitsResponses,
-    RustMapsApiFeaturesPublicApiMiscGetLimitsErrors,
-    ThrowOnError
-  >({
-    requestValidator: async (data) => {
-      return await ZRustMapsApiFeaturesPublicApiMiscGetLimitsData.parseAsync(data);
-    },
-    responseType: "json",
-    responseValidator: async (data) => {
-      return await ZRustMapsApiFeaturesPublicApiMiscGetLimitsResponse.parseAsync(data);
-    },
-    security: [
-      {
-        name: "X-API-Key",
-        type: "apiKey",
+export class Misc {
+  /**
+   * Returns current map gen limits
+   */
+  public static getLimits<ThrowOnError extends boolean = false>(
+    options?: Options<RustMapsApiFeaturesPublicApiMiscGetLimitsData, ThrowOnError>,
+  ) {
+    return (options?.client ?? client).get<
+      RustMapsApiFeaturesPublicApiMiscGetLimitsResponses,
+      RustMapsApiFeaturesPublicApiMiscGetLimitsErrors,
+      ThrowOnError
+    >({
+      requestValidator: async (data) => {
+        return await ZRustMapsApiFeaturesPublicApiMiscGetLimitsData.parseAsync(data);
       },
-    ],
-    url: "/v4/maps/limits",
-    ...options,
-  });
-};
+      responseType: "json",
+      responseValidator: async (data) => {
+        return await ZRustMapsApiFeaturesPublicApiMiscGetLimitsResponse.parseAsync(data);
+      },
+      security: [
+        {
+          name: "X-API-Key",
+          type: "apiKey",
+        },
+      ],
+      url: "/v4/maps/limits",
+      ...options,
+    });
+  }
 
-/**
- * Creates a new map generation request
- */
-export const rustMapsApiFeaturesPublicApiMapsCreate = <ThrowOnError extends boolean = false>(
-  options: Options<RustMapsApiFeaturesPublicApiMapsCreateData, ThrowOnError>,
-) => {
-  return (options.client ?? client).post<
-    RustMapsApiFeaturesPublicApiMapsCreateResponses,
-    RustMapsApiFeaturesPublicApiMapsCreateErrors,
-    ThrowOnError
-  >({
-    requestValidator: async (data) => {
-      return await ZRustMapsApiFeaturesPublicApiMapsCreateData.parseAsync(data);
-    },
-    responseType: "json",
-    responseValidator: async (data) => {
-      return await ZRustMapsApiFeaturesPublicApiMapsCreateResponse.parseAsync(data);
-    },
-    security: [
-      {
-        name: "X-API-Key",
-        type: "apiKey",
+  /**
+   * Get all custom map configs
+   */
+  public static customMapsGetConfigs<ThrowOnError extends boolean = false>(
+    options?: Options<RustMapsApiFeaturesPublicApiCustomMapsGetConfigsData, ThrowOnError>,
+  ) {
+    return (options?.client ?? client).get<
+      RustMapsApiFeaturesPublicApiCustomMapsGetConfigsResponses,
+      RustMapsApiFeaturesPublicApiCustomMapsGetConfigsErrors,
+      ThrowOnError
+    >({
+      requestValidator: async (data) => {
+        return await ZRustMapsApiFeaturesPublicApiCustomMapsGetConfigsData.parseAsync(data);
       },
-    ],
-    url: "/v4/maps",
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...options.headers,
-    },
-  });
-};
+      responseType: "json",
+      responseValidator: async (data) => {
+        return await ZRustMapsApiFeaturesPublicApiCustomMapsGetConfigsResponse.parseAsync(data);
+      },
+      security: [
+        {
+          name: "X-API-Key",
+          type: "apiKey",
+        },
+      ],
+      url: "/v4/maps/custom/saved-configs",
+      ...options,
+    });
+  }
+}
 
-/**
- * Get a map by id
- */
-export const rustMapsApiFeaturesPublicApiMapsGetId = <ThrowOnError extends boolean = false>(
-  options: Options<RustMapsApiFeaturesPublicApiMapsGetIdData, ThrowOnError>,
-) => {
-  return (options.client ?? client).get<
-    RustMapsApiFeaturesPublicApiMapsGetIdResponses,
-    RustMapsApiFeaturesPublicApiMapsGetIdErrors,
-    ThrowOnError
-  >({
-    requestValidator: async (data) => {
-      return await ZRustMapsApiFeaturesPublicApiMapsGetIdData.parseAsync(data);
-    },
-    responseType: "json",
-    responseValidator: async (data) => {
-      return await ZRustMapsApiFeaturesPublicApiMapsGetIdResponse.parseAsync(data);
-    },
-    security: [
-      {
-        name: "X-API-Key",
-        type: "apiKey",
+export class Maps {
+  /**
+   * Creates a new map generation request
+   */
+  public static create<ThrowOnError extends boolean = false>(
+    options: Options<RustMapsApiFeaturesPublicApiMapsCreateData, ThrowOnError>,
+  ) {
+    return (options.client ?? client).post<
+      RustMapsApiFeaturesPublicApiMapsCreateResponses,
+      RustMapsApiFeaturesPublicApiMapsCreateErrors,
+      ThrowOnError
+    >({
+      requestValidator: async (data) => {
+        return await ZRustMapsApiFeaturesPublicApiMapsCreateData.parseAsync(data);
       },
-    ],
-    url: "/v4/maps/{mapId}",
-    ...options,
-  });
-};
+      responseType: "json",
+      responseValidator: async (data) => {
+        return await ZRustMapsApiFeaturesPublicApiMapsCreateResponse.parseAsync(data);
+      },
+      security: [
+        {
+          name: "X-API-Key",
+          type: "apiKey",
+        },
+      ],
+      url: "/v4/maps",
+      ...options,
+      headers: {
+        "Content-Type": "application/json",
+        ...options.headers,
+      },
+    });
+  }
 
-/**
- * Get a map by seed and size
- */
-export const rustMapsApiFeaturesPublicApiMapsGetSeedSize = <ThrowOnError extends boolean = false>(
-  options: Options<RustMapsApiFeaturesPublicApiMapsGetSeedSizeData, ThrowOnError>,
-) => {
-  return (options.client ?? client).get<
-    RustMapsApiFeaturesPublicApiMapsGetSeedSizeResponses,
-    RustMapsApiFeaturesPublicApiMapsGetSeedSizeErrors,
-    ThrowOnError
-  >({
-    requestValidator: async (data) => {
-      return await ZRustMapsApiFeaturesPublicApiMapsGetSeedSizeData.parseAsync(data);
-    },
-    responseType: "json",
-    responseValidator: async (data) => {
-      return await ZRustMapsApiFeaturesPublicApiMapsGetSeedSizeResponse.parseAsync(data);
-    },
-    security: [
-      {
-        name: "X-API-Key",
-        type: "apiKey",
+  /**
+   * Get a map by id
+   */
+  public static getId<ThrowOnError extends boolean = false>(
+    options: Options<RustMapsApiFeaturesPublicApiMapsGetIdData, ThrowOnError>,
+  ) {
+    return (options.client ?? client).get<
+      RustMapsApiFeaturesPublicApiMapsGetIdResponses,
+      RustMapsApiFeaturesPublicApiMapsGetIdErrors,
+      ThrowOnError
+    >({
+      requestValidator: async (data) => {
+        return await ZRustMapsApiFeaturesPublicApiMapsGetIdData.parseAsync(data);
       },
-    ],
-    url: "/v4/maps/{size}/{seed}",
-    ...options,
-  });
-};
+      responseType: "json",
+      responseValidator: async (data) => {
+        return await ZRustMapsApiFeaturesPublicApiMapsGetIdResponse.parseAsync(data);
+      },
+      security: [
+        {
+          name: "X-API-Key",
+          type: "apiKey",
+        },
+      ],
+      url: "/v4/maps/{mapId}",
+      ...options,
+    });
+  }
 
-/**
- * Get custom map settings for a map
- */
-export const rustMapsApiFeaturesPublicApiMapsGetSettingsById = <ThrowOnError extends boolean = false>(
-  options: Options<RustMapsApiFeaturesPublicApiMapsGetSettingsByIdData, ThrowOnError>,
-) => {
-  return (options.client ?? client).get<
-    RustMapsApiFeaturesPublicApiMapsGetSettingsByIdResponses,
-    RustMapsApiFeaturesPublicApiMapsGetSettingsByIdErrors,
-    ThrowOnError
-  >({
-    requestValidator: async (data) => {
-      return await ZRustMapsApiFeaturesPublicApiMapsGetSettingsByIdData.parseAsync(data);
-    },
-    responseType: "json",
-    responseValidator: async (data) => {
-      return await ZRustMapsApiFeaturesPublicApiMapsGetSettingsByIdResponse.parseAsync(data);
-    },
-    security: [
-      {
-        name: "X-API-Key",
-        type: "apiKey",
+  /**
+   * Get a map by seed and size
+   */
+  public static getSeedSize<ThrowOnError extends boolean = false>(
+    options: Options<RustMapsApiFeaturesPublicApiMapsGetSeedSizeData, ThrowOnError>,
+  ) {
+    return (options.client ?? client).get<
+      RustMapsApiFeaturesPublicApiMapsGetSeedSizeResponses,
+      RustMapsApiFeaturesPublicApiMapsGetSeedSizeErrors,
+      ThrowOnError
+    >({
+      requestValidator: async (data) => {
+        return await ZRustMapsApiFeaturesPublicApiMapsGetSeedSizeData.parseAsync(data);
       },
-    ],
-    url: "/v4/maps/{mapId}/settings",
-    ...options,
-  });
-};
+      responseType: "json",
+      responseValidator: async (data) => {
+        return await ZRustMapsApiFeaturesPublicApiMapsGetSeedSizeResponse.parseAsync(data);
+      },
+      security: [
+        {
+          name: "X-API-Key",
+          type: "apiKey",
+        },
+      ],
+      url: "/v4/maps/{size}/{seed}",
+      ...options,
+    });
+  }
 
-/**
- * Get a map by its download url
- */
-export const rustMapsApiFeaturesPublicApiMapsGetUrl = <ThrowOnError extends boolean = false>(
-  options: Options<RustMapsApiFeaturesPublicApiMapsGetUrlData, ThrowOnError>,
-) => {
-  return (options.client ?? client).get<
-    RustMapsApiFeaturesPublicApiMapsGetUrlResponses,
-    RustMapsApiFeaturesPublicApiMapsGetUrlErrors,
-    ThrowOnError
-  >({
-    requestValidator: async (data) => {
-      return await ZRustMapsApiFeaturesPublicApiMapsGetUrlData.parseAsync(data);
-    },
-    responseType: "json",
-    responseValidator: async (data) => {
-      return await ZRustMapsApiFeaturesPublicApiMapsGetUrlResponse.parseAsync(data);
-    },
-    security: [
-      {
-        name: "X-API-Key",
-        type: "apiKey",
+  /**
+   * Get a map by its download url
+   */
+  public static getUrl<ThrowOnError extends boolean = false>(
+    options: Options<RustMapsApiFeaturesPublicApiMapsGetUrlData, ThrowOnError>,
+  ) {
+    return (options.client ?? client).get<
+      RustMapsApiFeaturesPublicApiMapsGetUrlResponses,
+      RustMapsApiFeaturesPublicApiMapsGetUrlErrors,
+      ThrowOnError
+    >({
+      requestValidator: async (data) => {
+        return await ZRustMapsApiFeaturesPublicApiMapsGetUrlData.parseAsync(data);
       },
-    ],
-    url: "/v4/maps/url",
-    ...options,
-  });
-};
+      responseType: "json",
+      responseValidator: async (data) => {
+        return await ZRustMapsApiFeaturesPublicApiMapsGetUrlResponse.parseAsync(data);
+      },
+      security: [
+        {
+          name: "X-API-Key",
+          type: "apiKey",
+        },
+      ],
+      url: "/v4/maps/url",
+      ...options,
+    });
+  }
+}
 
-/**
- * Upload a new map
- */
-export const rustMapsApiFeaturesPublicApiMapsUpload = <ThrowOnError extends boolean = false>(
-  options: Options<RustMapsApiFeaturesPublicApiMapsUploadData, ThrowOnError>,
-) => {
-  return (options.client ?? client).post<
-    RustMapsApiFeaturesPublicApiMapsUploadResponses,
-    RustMapsApiFeaturesPublicApiMapsUploadErrors,
-    ThrowOnError
-  >({
-    ...formDataBodySerializer,
-    requestValidator: async (data) => {
-      return await ZRustMapsApiFeaturesPublicApiMapsUploadData.parseAsync(data);
-    },
-    responseType: "json",
-    responseValidator: async (data) => {
-      return await ZRustMapsApiFeaturesPublicApiMapsUploadResponse.parseAsync(data);
-    },
-    security: [
-      {
-        name: "X-API-Key",
-        type: "apiKey",
+export class SubscriptionRequired {
+  /**
+   * Get custom map settings for a map
+   */
+  public static mapsGetSettingsById<ThrowOnError extends boolean = false>(
+    options: Options<RustMapsApiFeaturesPublicApiMapsGetSettingsByIdData, ThrowOnError>,
+  ) {
+    return (options.client ?? client).get<
+      RustMapsApiFeaturesPublicApiMapsGetSettingsByIdResponses,
+      RustMapsApiFeaturesPublicApiMapsGetSettingsByIdErrors,
+      ThrowOnError
+    >({
+      requestValidator: async (data) => {
+        return await ZRustMapsApiFeaturesPublicApiMapsGetSettingsByIdData.parseAsync(data);
       },
-    ],
-    url: "/v4/maps/upload",
-    ...options,
-    headers: {
-      "Content-Type": null,
-      ...options.headers,
-    },
-  });
-};
+      responseType: "json",
+      responseValidator: async (data) => {
+        return await ZRustMapsApiFeaturesPublicApiMapsGetSettingsByIdResponse.parseAsync(data);
+      },
+      security: [
+        {
+          name: "X-API-Key",
+          type: "apiKey",
+        },
+      ],
+      url: "/v4/maps/{mapId}/settings",
+      ...options,
+    });
+  }
 
-/**
- * Returns default config for custom maps
- */
-export const rustMapsApiFeaturesPublicApiCustomMapsDefaultConfig = <ThrowOnError extends boolean = false>(
-  options?: Options<RustMapsApiFeaturesPublicApiCustomMapsDefaultConfigData, ThrowOnError>,
-) => {
-  return (options?.client ?? client).get<
-    RustMapsApiFeaturesPublicApiCustomMapsDefaultConfigResponses,
-    RustMapsApiFeaturesPublicApiCustomMapsDefaultConfigErrors,
-    ThrowOnError
-  >({
-    requestValidator: async (data) => {
-      return await ZRustMapsApiFeaturesPublicApiCustomMapsDefaultConfigData.parseAsync(data);
-    },
-    responseType: "json",
-    responseValidator: async (data) => {
-      return await ZRustMapsApiFeaturesPublicApiCustomMapsDefaultConfigResponse.parseAsync(data);
-    },
-    security: [
-      {
-        name: "X-API-Key",
-        type: "apiKey",
+  /**
+   * Returns default config for custom maps
+   */
+  public static customMapsDefaultConfig<ThrowOnError extends boolean = false>(
+    options?: Options<RustMapsApiFeaturesPublicApiCustomMapsDefaultConfigData, ThrowOnError>,
+  ) {
+    return (options?.client ?? client).get<
+      RustMapsApiFeaturesPublicApiCustomMapsDefaultConfigResponses,
+      RustMapsApiFeaturesPublicApiCustomMapsDefaultConfigErrors,
+      ThrowOnError
+    >({
+      requestValidator: async (data) => {
+        return await ZRustMapsApiFeaturesPublicApiCustomMapsDefaultConfigData.parseAsync(data);
       },
-    ],
-    url: "/v4/maps/custom",
-    ...options,
-  });
-};
+      responseType: "json",
+      responseValidator: async (data) => {
+        return await ZRustMapsApiFeaturesPublicApiCustomMapsDefaultConfigResponse.parseAsync(data);
+      },
+      security: [
+        {
+          name: "X-API-Key",
+          type: "apiKey",
+        },
+      ],
+      url: "/v4/maps/custom",
+      ...options,
+    });
+  }
 
-/**
- * Used to generate custom maps, provide org id header if the maps are supposed to be generated for an org
- */
-export const rustMapsApiFeaturesPublicApiCustomMapsCreate = <ThrowOnError extends boolean = false>(
-  options: Options<RustMapsApiFeaturesPublicApiCustomMapsCreateData, ThrowOnError>,
-) => {
-  return (options.client ?? client).post<
-    RustMapsApiFeaturesPublicApiCustomMapsCreateResponses,
-    RustMapsApiFeaturesPublicApiCustomMapsCreateErrors,
-    ThrowOnError
-  >({
-    requestValidator: async (data) => {
-      return await ZRustMapsApiFeaturesPublicApiCustomMapsCreateData.parseAsync(data);
-    },
-    responseType: "json",
-    responseValidator: async (data) => {
-      return await ZRustMapsApiFeaturesPublicApiCustomMapsCreateResponse.parseAsync(data);
-    },
-    security: [
-      {
-        name: "X-API-Key",
-        type: "apiKey",
+  /**
+   * Used to generate custom maps, provide org id header if the maps are supposed to be generated for an org
+   */
+  public static customMapsCreate<ThrowOnError extends boolean = false>(
+    options: Options<RustMapsApiFeaturesPublicApiCustomMapsCreateData, ThrowOnError>,
+  ) {
+    return (options.client ?? client).post<
+      RustMapsApiFeaturesPublicApiCustomMapsCreateResponses,
+      RustMapsApiFeaturesPublicApiCustomMapsCreateErrors,
+      ThrowOnError
+    >({
+      requestValidator: async (data) => {
+        return await ZRustMapsApiFeaturesPublicApiCustomMapsCreateData.parseAsync(data);
       },
-    ],
-    url: "/v4/maps/custom",
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...options.headers,
-    },
-  });
-};
+      responseType: "json",
+      responseValidator: async (data) => {
+        return await ZRustMapsApiFeaturesPublicApiCustomMapsCreateResponse.parseAsync(data);
+      },
+      security: [
+        {
+          name: "X-API-Key",
+          type: "apiKey",
+        },
+      ],
+      url: "/v4/maps/custom",
+      ...options,
+      headers: {
+        "Content-Type": "application/json",
+        ...options.headers,
+      },
+    });
+  }
 
-/**
- * Used to generate custom maps, provide org id header if the maps are supposed to be generated for an org
- */
-export const rustMapsApiFeaturesPublicApiCustomMapsCreateFromConfig = <ThrowOnError extends boolean = false>(
-  options: Options<RustMapsApiFeaturesPublicApiCustomMapsCreateFromConfigData, ThrowOnError>,
-) => {
-  return (options.client ?? client).post<
-    RustMapsApiFeaturesPublicApiCustomMapsCreateFromConfigResponses,
-    RustMapsApiFeaturesPublicApiCustomMapsCreateFromConfigErrors,
-    ThrowOnError
-  >({
-    requestValidator: async (data) => {
-      return await ZRustMapsApiFeaturesPublicApiCustomMapsCreateFromConfigData.parseAsync(data);
-    },
-    responseType: "json",
-    responseValidator: async (data) => {
-      return await ZRustMapsApiFeaturesPublicApiCustomMapsCreateFromConfigResponse.parseAsync(data);
-    },
-    security: [
-      {
-        name: "X-API-Key",
-        type: "apiKey",
+  /**
+   * Used to generate custom maps, provide org id header if the maps are supposed to be generated for an org
+   */
+  public static customMapsCreateFromConfig<ThrowOnError extends boolean = false>(
+    options: Options<RustMapsApiFeaturesPublicApiCustomMapsCreateFromConfigData, ThrowOnError>,
+  ) {
+    return (options.client ?? client).post<
+      RustMapsApiFeaturesPublicApiCustomMapsCreateFromConfigResponses,
+      RustMapsApiFeaturesPublicApiCustomMapsCreateFromConfigErrors,
+      ThrowOnError
+    >({
+      requestValidator: async (data) => {
+        return await ZRustMapsApiFeaturesPublicApiCustomMapsCreateFromConfigData.parseAsync(data);
       },
-    ],
-    url: "/v4/maps/custom/saved-config",
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...options.headers,
-    },
-  });
-};
+      responseType: "json",
+      responseValidator: async (data) => {
+        return await ZRustMapsApiFeaturesPublicApiCustomMapsCreateFromConfigResponse.parseAsync(data);
+      },
+      security: [
+        {
+          name: "X-API-Key",
+          type: "apiKey",
+        },
+      ],
+      url: "/v4/maps/custom/saved-config",
+      ...options,
+      headers: {
+        "Content-Type": "application/json",
+        ...options.headers,
+      },
+    });
+  }
+}
 
-/**
- * Get all custom map configs
- */
-export const rustMapsApiFeaturesPublicApiCustomMapsGetConfigs = <ThrowOnError extends boolean = false>(
-  options?: Options<RustMapsApiFeaturesPublicApiCustomMapsGetConfigsData, ThrowOnError>,
-) => {
-  return (options?.client ?? client).get<
-    RustMapsApiFeaturesPublicApiCustomMapsGetConfigsResponses,
-    RustMapsApiFeaturesPublicApiCustomMapsGetConfigsErrors,
-    ThrowOnError
-  >({
-    requestValidator: async (data) => {
-      return await ZRustMapsApiFeaturesPublicApiCustomMapsGetConfigsData.parseAsync(data);
-    },
-    responseType: "json",
-    responseValidator: async (data) => {
-      return await ZRustMapsApiFeaturesPublicApiCustomMapsGetConfigsResponse.parseAsync(data);
-    },
-    security: [
-      {
-        name: "X-API-Key",
-        type: "apiKey",
+export class MapsUpload {
+  /**
+   * Upload a new map
+   */
+  public static mapsUpload<ThrowOnError extends boolean = false>(
+    options: Options<RustMapsApiFeaturesPublicApiMapsUploadData, ThrowOnError>,
+  ) {
+    return (options.client ?? client).post<
+      RustMapsApiFeaturesPublicApiMapsUploadResponses,
+      RustMapsApiFeaturesPublicApiMapsUploadErrors,
+      ThrowOnError
+    >({
+      ...formDataBodySerializer,
+      requestValidator: async (data) => {
+        return await ZRustMapsApiFeaturesPublicApiMapsUploadData.parseAsync(data);
       },
-    ],
-    url: "/v4/maps/custom/saved-configs",
-    ...options,
-  });
-};
+      responseType: "json",
+      responseValidator: async (data) => {
+        return await ZRustMapsApiFeaturesPublicApiMapsUploadResponse.parseAsync(data);
+      },
+      security: [
+        {
+          name: "X-API-Key",
+          type: "apiKey",
+        },
+      ],
+      url: "/v4/maps/upload",
+      ...options,
+      headers: {
+        "Content-Type": null,
+        ...options.headers,
+      },
+    });
+  }
+}
