@@ -460,6 +460,13 @@ export type ServiceResponseOfPartialMapDto = {
 
 export type PartialMapDto = {
   id?: string | null;
+  seed?: number | null;
+  size?: number | null;
+  isCustomMap?: boolean | null;
+  isUploadedMap?: boolean | null;
+  isStaging?: boolean | null;
+  queuedAt?: string | null;
+  configLabel?: string | null;
 };
 
 export type ServiceResponseOfMapStatusDto = {
@@ -473,6 +480,9 @@ export type MapStatusDto = {
   state?: MapStates;
   currentStep?: string | null;
   lastGeneratorPingUtc?: string | null;
+  generationStartedUtc?: string | null;
+  previewVersion?: number | null;
+  previewAttempt?: number | null;
 };
 
 export const MapStates = {
@@ -538,6 +548,7 @@ export type MapApidto = {
   canyons?: number;
   oases?: number;
   buildableRocks?: number;
+  estimatedDeletionDate?: string | null;
 };
 
 export type MonumentApidto = {
@@ -575,12 +586,15 @@ export type CustomMapSettings = {
   removeLargePowerLines?: boolean | null;
   removeCarWrecks?: boolean | null;
   removeRivers?: boolean | null;
+  riverCount?: number | null;
+  riverWidth?: number | null;
+  riverMaxLength?: number | null;
   allowBuildingOnRoads?: boolean | null;
   modifyTiers?: boolean | null;
   trySpawningOutpostInCenter?: boolean | null;
   terrainConfiguration?: TerrainConfiguration | null;
   oilRigConfigurations?: Array<OilRigConfiguration> | null;
-  safezones?: Array<PrefabCustomizableMonumentConfiguration> | null;
+  safezones?: Array<LargeMonumentConfiguration> | null;
   largeMonuments?: Array<LargeMonumentConfiguration> | null;
   smallMonuments?: Array<BasicMonumentConfiguration> | null;
   harbors?: Array<BasicMonumentConfiguration> | null;
@@ -595,13 +609,15 @@ export type CustomMapSettings = {
     [key: string]: string;
   } | null;
   webhook?: WebhookSettingsDto | null;
-  underwaterLabsConfiguration?: LabConfiguration | null;
+  underwaterLabsConfiguration?: UnderwaterLabsConfiguration | null;
   lakesConfiguration?: LabConfiguration | null;
   oasesConfiguration?: LabConfiguration | null;
   canyonsConfiguration?: LabConfiguration | null;
-  blockedPrefabs?: Array<string> | null;
+  blockedPrefabs?: Array<BlockedPrefabEntry> | null;
   removeUndergroundTunnels?: boolean | null;
   embedCargoShipPath?: boolean | null;
+  heightmapResolution?: LayerResolution | null;
+  splatmapResolution?: LayerResolution | null;
 };
 
 export type TerrainConfiguration = {
@@ -690,8 +706,9 @@ export const LootAngle = {
 export type LootAngle = (typeof LootAngle)[keyof typeof LootAngle];
 
 export type OilRigConfiguration = LargeMonumentConfiguration & {
-  biomePreference?: BiomePreference | null;
-  position?: OilRigPosition | null;
+  biomePreference?: BiomePreference;
+  position?: OilRigPosition;
+  placements?: Array<OilRigPlacement>;
 };
 
 export type BiomePreference = {
@@ -726,6 +743,55 @@ export const MonumentAlignment = {
 
 export type MonumentAlignment = (typeof MonumentAlignment)[keyof typeof MonumentAlignment];
 
+export type OilRigPlacement = {
+  mode?: OilRigPlacementMode;
+  alignment?: MonumentAlignment;
+  position?: number;
+  biome?: BiomeTypes2 | null;
+};
+
+export const OilRigPlacementMode = {
+  /**
+   * Anywhere
+   */
+  Anywhere: "Anywhere",
+  /**
+   * Pinned
+   */
+  Pinned: "Pinned",
+  /**
+   * Biome
+   */
+  Biome: "Biome",
+} as const;
+
+export type OilRigPlacementMode = (typeof OilRigPlacementMode)[keyof typeof OilRigPlacementMode];
+
+export const BiomeTypes2 = {
+  /**
+   * Snow
+   */
+  Snow: "Snow",
+  /**
+   * Desert
+   */
+  Desert: "Desert",
+  /**
+   * Forest
+   */
+  Forest: "Forest",
+  /**
+   * Tundra
+   */
+  Tundra: "Tundra",
+  /**
+   * Jungle
+   */
+  Jungle: "Jungle",
+} as const;
+
+export type BiomeTypes2 = (typeof BiomeTypes2)[keyof typeof BiomeTypes2];
+
 export type LargeMonumentConfiguration = BasicMonumentConfiguration & {
   desired?: boolean;
 };
@@ -735,6 +801,13 @@ export type BasicMonumentConfiguration = {
   blocked?: boolean;
   allowedToSetBiomes?: boolean;
   biomePreferences?: Array<MonumentBiomePreference> | null;
+  allowedToSetTiers?: boolean;
+  tierPreferences?: Array<MonumentTierPreference> | null;
+  distanceRules?: Array<MonumentDistanceRule> | null;
+  nearbyPrefabRules?: Array<NearbyPrefabRule> | null;
+  flattenTerrain?: TerrainFlattenConfiguration | null;
+  amount?: number | null;
+  customPrefab?: CustomPrefab | null;
 };
 
 export type MonumentBiomePreference = {
@@ -742,18 +815,165 @@ export type MonumentBiomePreference = {
   selection?: SelectionStatus;
 };
 
-export type PrefabCustomizableMonumentConfiguration = LargeMonumentConfiguration & {
-  customPrefab?: CustomPrefab | null;
+export type MonumentTierPreference = {
+  tierType?: TierTypes;
+  selection?: SelectionStatus;
 };
+
+export const TierTypes = {
+  /**
+   * Tier0
+   */
+  Tier0: "Tier0",
+  /**
+   * Tier1
+   */
+  Tier1: "Tier1",
+  /**
+   * Tier2
+   */
+  Tier2: "Tier2",
+} as const;
+
+export type TierTypes = (typeof TierTypes)[keyof typeof TierTypes];
+
+export type MonumentDistanceRule = {
+  target?: DistanceTarget;
+  minDistance?: number;
+  maxDistance?: number | null;
+};
+
+export type DistanceTarget = {
+  kind?: DistanceTargetKind;
+  category?: MonumentDistanceCategory;
+  monument?: MonumentTypes;
+  isAny?: boolean;
+  isCategory?: boolean;
+  isMonument?: boolean;
+  isMapCenter?: boolean;
+};
+
+export const DistanceTargetKind = {
+  /**
+   * None
+   */
+  None: 0,
+  /**
+   * Any
+   */
+  Any: 1,
+  /**
+   * Category
+   */
+  Category: 2,
+  /**
+   * Monument
+   */
+  Monument: 3,
+  /**
+   * MapCenter
+   */
+  MapCenter: 4,
+} as const;
+
+export type DistanceTargetKind = (typeof DistanceTargetKind)[keyof typeof DistanceTargetKind];
+
+export const MonumentDistanceCategory = {
+  /**
+   * None
+   */
+  None: 0,
+  /**
+   * Large
+   */
+  Large: 1,
+  /**
+   * Safezone
+   */
+  Safezone: 2,
+  /**
+   * Quarry
+   */
+  Quarry: 3,
+  /**
+   * Harbor
+   */
+  Harbor: 4,
+  /**
+   * WaterWell
+   */
+  WaterWell: 5,
+  /**
+   * Roadside
+   */
+  Roadside: 6,
+} as const;
+
+export type MonumentDistanceCategory = (typeof MonumentDistanceCategory)[keyof typeof MonumentDistanceCategory];
+
+export type NearbyPrefabRule = {
+  name?: string;
+  percent?: number | null;
+  distance?: number | null;
+};
+
+export type TerrainFlattenConfiguration = {
+  enabled?: boolean;
+  distance?: number | null;
+  strength?: TerrainFlattenStrength;
+  scope?: TerrainFlattenScope;
+};
+
+export const TerrainFlattenStrength = {
+  /**
+   * Subtle
+   */
+  Subtle: "Subtle",
+  /**
+   * Balanced
+   */
+  Balanced: "Balanced",
+  /**
+   * Strong
+   */
+  Strong: "Strong",
+  /**
+   * Max
+   */
+  Max: "Max",
+} as const;
+
+export type TerrainFlattenStrength = (typeof TerrainFlattenStrength)[keyof typeof TerrainFlattenStrength];
+
+export const TerrainFlattenScope = {
+  /**
+   * OutsideNoBuildZone
+   */
+  OutsideNoBuildZone: "OutsideNoBuildZone",
+  /**
+   * FromMonument
+   */
+  FromMonument: "FromMonument",
+  /**
+   * ThroughNoBuildZone
+   */
+  ThroughNoBuildZone: "ThroughNoBuildZone",
+} as const;
+
+export type TerrainFlattenScope = (typeof TerrainFlattenScope)[keyof typeof TerrainFlattenScope];
 
 export type CustomPrefab = {
   enabled?: boolean;
-  id?: string | null;
+  id?: string;
 };
 
 export type WebhookSettingsDto = {
   enabled?: boolean;
-  url?: string | null;
+  url?: string;
+};
+
+export type UnderwaterLabsConfiguration = LabConfiguration & {
+  distanceRules?: Array<MonumentDistanceRule> | null;
 };
 
 export type LabConfiguration = {
@@ -762,6 +982,34 @@ export type LabConfiguration = {
   blocked?: boolean;
   generate?: SelectionStatus | null;
 };
+
+export type BlockedPrefabEntry =
+  | string
+  | {
+      name: string;
+      percent: number;
+    };
+
+export const LayerResolution = {
+  /**
+   * Full
+   */
+  Full: "Full",
+  /**
+   * Half
+   */
+  Half: "Half",
+  /**
+   * Quarter
+   */
+  Quarter: "Quarter",
+  /**
+   * Eighth
+   */
+  Eighth: "Eighth",
+} as const;
+
+export type LayerResolution = (typeof LayerResolution)[keyof typeof LayerResolution];
 
 export type MapGetByUrlRequest = {
   [key: string]: never;
@@ -784,6 +1032,11 @@ export type UploadedMapDto = {
   downloadUrl?: string | null;
   note?: string | null;
   estimatedDeletionDate?: string | null;
+  uploaderId?: string | null;
+  uploaderName?: string | null;
+  uploaderAvatarUrl?: string | null;
+  organizationId?: string | null;
+  organizationName?: string | null;
 };
 
 export type MapUploadNormalDto = {

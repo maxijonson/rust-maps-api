@@ -298,6 +298,7 @@ export class SubscriptionRequired {
 
   /**
    * Used to generate custom maps, provide org id header if the maps are supposed to be generated for an org
+   * Oil rig placement precedence: when an oil rig configuration carries both 'placements' and the legacy 'position', 'placements' wins and 'position' is ignored as an input. The stored settings of the queued map gain a materialized 'placements' list, with 'position' rewritten to mirror the first pinned slot (or disabled when there is none); read them back via GET maps/{mapId}/settings. To change a rig's pinned spot on a payload that already has 'placements', edit the slot in 'placements'; editing 'position' alone has no effect. Send 'placements' as null to keep using the legacy 'position'.
    */
   public static customMapsCreate<ThrowOnError extends boolean = false>(
     options: Options<RustMapsApiFeaturesPublicApiCustomMapsCreateData, ThrowOnError>,
