@@ -90,6 +90,13 @@ _(Only for maintainers)_ Automatically update the clients and publish them to NP
 npm version patch # or minor or major
 ```
 
+If this fails to publish at the end, you may be logged out:
+
+```
+npm login
+npm publish
+```
+
 ## Contributing
 
 Apart from configuration, everything is automatically generated from the OpenAPI spec. No manual changes are made to the generated code. If you find the generated clients are outdated, you can let me know and I'll run the generation script again and publish them to NPM. This project doesn't do anything fancy that you wouldn't be able to do yourself with Hey API.
