@@ -118,177 +118,21 @@ export type MonumentFilterDto = {
 
 export const MonumentTypes = {
   /**
-   * Outpost
-   */
-  Outpost: "Outpost",
-  /**
-   * Bandit Town
-   */
-  BanditTown: "Bandit Town",
-  /**
-   * Fishing Village A
-   */
-  FishingVillageA: "Fishing Village A",
-  /**
-   * Fishing Village B
-   */
-  FishingVillageB: "Fishing Village B",
-  /**
-   * Fishing Village C
-   */
-  FishingVillageC: "Fishing Village C",
-  /**
-   * Ranch
-   */
-  Ranch: "Ranch",
-  /**
-   * Large Barn
-   */
-  LargeBarn: "Large Barn",
-  /**
-   * Excavator
-   */
-  Excavator: "Excavator",
-  /**
    * Airfield
    */
   Airfield: "Airfield",
   /**
-   * Junkyard
+   * Apartments Complex
    */
-  Junkyard: "Junkyard",
-  /**
-   * Launch Site
-   */
-  LaunchSite: "Launch Site",
-  /**
-   * Military Tunnels
-   */
-  MilitaryTunnels: "Military Tunnels",
-  /**
-   * Powerplant
-   */
-  Powerplant: "Powerplant",
-  /**
-   * Radtown
-   */
-  Radtown: "Radtown",
-  /**
-   * Trainyard
-   */
-  Trainyard: "Trainyard",
-  /**
-   * Water Treatment
-   */
-  WaterTreatment: "Water Treatment",
-  /**
-   * Sphere Tank
-   */
-  SphereTank: "Sphere Tank",
-  /**
-   * Satellite Dish
-   */
-  SatelliteDish: "Satellite Dish",
-  /**
-   * Large Oilrig
-   */
-  LargeOilrig: "Large Oilrig",
-  /**
-   * Small Oilrig
-   */
-  SmallOilrig: "Small Oilrig",
-  /**
-   * Nuclear Missile Silo
-   */
-  NuclearMissileSilo: "Nuclear Missile Silo",
-  /**
-   * Ziggurat
-   */
-  Ziggurat: "Ziggurat",
-  /**
-   * Gas Station
-   */
-  GasStation: "Gas Station",
-  /**
-   * Supermarket
-   */
-  Supermarket: "Supermarket",
-  /**
-   * Warehouse
-   */
-  Warehouse: "Warehouse",
-  /**
-   * Lighthouse
-   */
-  Lighthouse: "Lighthouse",
-  /**
-   * Sewer Branch
-   */
-  SewerBranch: "Sewer Branch",
-  /**
-   * Swamp A
-   */
-  SwampA: "Swamp A",
-  /**
-   * Swamp B
-   */
-  SwampB: "Swamp B",
-  /**
-   * Swamp C
-   */
-  SwampC: "Swamp C",
-  /**
-   * Military Base A
-   */
-  MilitaryBaseA: "Military Base A",
-  /**
-   * Military Base B
-   */
-  MilitaryBaseB: "Military Base B",
-  /**
-   * Military Base C
-   */
-  MilitaryBaseC: "Military Base C",
-  /**
-   * Military Base D
-   */
-  MilitaryBaseD: "Military Base D",
+  ApartmentsComplex: "Apartments Complex",
   /**
    * Arctic Research Base A
    */
   ArcticResearchBaseA: "Arctic Research Base A",
   /**
-   * Small Harbor
+   * Bandit Town
    */
-  SmallHarbor: "Small Harbor",
-  /**
-   * Large Harbor
-   */
-  LargeHarbor: "Large Harbor",
-  /**
-   * Ferry Terminal
-   */
-  FerryTerminal: "Ferry Terminal",
-  /**
-   * Water Well A
-   */
-  WaterWellA: "Water Well A",
-  /**
-   * Water Well B
-   */
-  WaterWellB: "Water Well B",
-  /**
-   * Water Well C
-   */
-  WaterWellC: "Water Well C",
-  /**
-   * Water Well D
-   */
-  WaterWellD: "Water Well D",
-  /**
-   * Water Well E
-   */
-  WaterWellE: "Water Well E",
+  BanditTown: "Bandit Town",
   /**
    * Cave Large Hard
    */
@@ -326,37 +170,49 @@ export const MonumentTypes = {
    */
   CaveSmallMedium: "Cave Small Medium",
   /**
-   * Mountain 1
+   * Excavator
    */
-  Mountain1: "Mountain 1",
+  Excavator: "Excavator",
   /**
-   * Mountain 2
+   * Ferry Terminal
    */
-  Mountain2: "Mountain 2",
+  FerryTerminal: "Ferry Terminal",
   /**
-   * Mountain 3
+   * Fishing Village A
    */
-  Mountain3: "Mountain 3",
+  FishingVillageA: "Fishing Village A",
   /**
-   * Mountain 4
+   * Fishing Village B
    */
-  Mountain4: "Mountain 4",
+  FishingVillageB: "Fishing Village B",
   /**
-   * Mountain 5
+   * Fishing Village C
    */
-  Mountain5: "Mountain 5",
+  FishingVillageC: "Fishing Village C",
   /**
-   * Sulfur Quarry
+   * Gas Station
    */
-  SulfurQuarry: "Sulfur Quarry",
-  /**
-   * Stone Quarry
-   */
-  StoneQuarry: "Stone Quarry",
+  GasStation: "Gas Station",
   /**
    * Hqm Quarry
    */
   HqmQuarry: "Hqm Quarry",
+  /**
+   * Ice Lake 1
+   */
+  IceLake1: "Ice Lake 1",
+  /**
+   * Ice Lake 2
+   */
+  IceLake2: "Ice Lake 2",
+  /**
+   * Ice Lake 3
+   */
+  IceLake3: "Ice Lake 3",
+  /**
+   * Ice Lake 4
+   */
+  IceLake4: "Ice Lake 4",
   /**
    * Iceberg 1
    */
@@ -378,21 +234,89 @@ export const MonumentTypes = {
    */
   Iceberg5: "Iceberg 5",
   /**
-   * Ice Lake 1
+   * Junkyard
    */
-  IceLake1: "Ice Lake 1",
+  Junkyard: "Junkyard",
   /**
-   * Ice Lake 2
+   * Large Barn
    */
-  IceLake2: "Ice Lake 2",
+  LargeBarn: "Large Barn",
   /**
-   * Ice Lake 3
+   * Large Harbor
    */
-  IceLake3: "Ice Lake 3",
+  LargeHarbor: "Large Harbor",
   /**
-   * Ice Lake 4
+   * Large Oilrig
    */
-  IceLake4: "Ice Lake 4",
+  LargeOilrig: "Large Oilrig",
+  /**
+   * Launch Site
+   */
+  LaunchSite: "Launch Site",
+  /**
+   * Lighthouse
+   */
+  Lighthouse: "Lighthouse",
+  /**
+   * Military Base A
+   */
+  MilitaryBaseA: "Military Base A",
+  /**
+   * Military Base B
+   */
+  MilitaryBaseB: "Military Base B",
+  /**
+   * Military Base C
+   */
+  MilitaryBaseC: "Military Base C",
+  /**
+   * Military Base D
+   */
+  MilitaryBaseD: "Military Base D",
+  /**
+   * Military Tunnels
+   */
+  MilitaryTunnels: "Military Tunnels",
+  /**
+   * Mountain 1
+   */
+  Mountain1: "Mountain 1",
+  /**
+   * Mountain 2
+   */
+  Mountain2: "Mountain 2",
+  /**
+   * Mountain 3
+   */
+  Mountain3: "Mountain 3",
+  /**
+   * Mountain 4
+   */
+  Mountain4: "Mountain 4",
+  /**
+   * Mountain 5
+   */
+  Mountain5: "Mountain 5",
+  /**
+   * Nuclear Missile Silo
+   */
+  NuclearMissileSilo: "Nuclear Missile Silo",
+  /**
+   * Outpost
+   */
+  Outpost: "Outpost",
+  /**
+   * Powerplant
+   */
+  Powerplant: "Powerplant",
+  /**
+   * Radtown
+   */
+  Radtown: "Radtown",
+  /**
+   * Ranch
+   */
+  Ranch: "Ranch",
   /**
    * Ruin A
    */
@@ -413,6 +337,86 @@ export const MonumentTypes = {
    * Ruin E
    */
   RuinE: "Ruin E",
+  /**
+   * Satellite Dish
+   */
+  SatelliteDish: "Satellite Dish",
+  /**
+   * Sewer Branch
+   */
+  SewerBranch: "Sewer Branch",
+  /**
+   * Small Harbor
+   */
+  SmallHarbor: "Small Harbor",
+  /**
+   * Small Oilrig
+   */
+  SmallOilrig: "Small Oilrig",
+  /**
+   * Sphere Tank
+   */
+  SphereTank: "Sphere Tank",
+  /**
+   * Stone Quarry
+   */
+  StoneQuarry: "Stone Quarry",
+  /**
+   * Sulfur Quarry
+   */
+  SulfurQuarry: "Sulfur Quarry",
+  /**
+   * Supermarket
+   */
+  Supermarket: "Supermarket",
+  /**
+   * Swamp A
+   */
+  SwampA: "Swamp A",
+  /**
+   * Swamp B
+   */
+  SwampB: "Swamp B",
+  /**
+   * Swamp C
+   */
+  SwampC: "Swamp C",
+  /**
+   * Trainyard
+   */
+  Trainyard: "Trainyard",
+  /**
+   * Warehouse
+   */
+  Warehouse: "Warehouse",
+  /**
+   * Water Treatment
+   */
+  WaterTreatment: "Water Treatment",
+  /**
+   * Water Well A
+   */
+  WaterWellA: "Water Well A",
+  /**
+   * Water Well B
+   */
+  WaterWellB: "Water Well B",
+  /**
+   * Water Well C
+   */
+  WaterWellC: "Water Well C",
+  /**
+   * Water Well D
+   */
+  WaterWellD: "Water Well D",
+  /**
+   * Water Well E
+   */
+  WaterWellE: "Water Well E",
+  /**
+   * Ziggurat
+   */
+  Ziggurat: "Ziggurat",
 } as const;
 
 export type MonumentTypes = (typeof MonumentTypes)[keyof typeof MonumentTypes];
